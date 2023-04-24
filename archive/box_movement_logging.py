@@ -50,15 +50,16 @@ def run_shared_sequence(scf):
     commander.takeoff(1.0, 5.0)
     simple_log_async(scf, log_pos)
 
+    # AREA: Absolute coordinate code
+    commander.go_to(box_size, 0, )
+
+    # AREA: Relative Code
     # commander.go_to(box_size, 0, 0, 0, flight_time, relative=True)
     # time.sleep(flight_time)
-
     # commander.go_to(0, box_size, 0, 0, flight_time, relative=True)
     # time.sleep(flight_time)
-
     # commander.go_to(-box_size, 0, 0, 0, flight_time, relative=True)
     # time.sleep(flight_time)
-
     # commander.go_to(0, -box_size, 0, 0, flight_time, relative=True)
     # time.sleep(flight_time)
 
