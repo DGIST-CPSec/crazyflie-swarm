@@ -1,3 +1,8 @@
+# This file does test for single-swarm, logging, with multiple possible options of movements
+# Based on two official documents:
+#     https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/user-guides/sbs_motion_commander/
+#     https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/user-guides/sbs_swarm_interface/
+
 import logging
 import sys
 import time, datetime
@@ -78,17 +83,11 @@ def mission(scf, code):
             time.sleep(4)
             hlcomm.go_to(    0,-0.3, 0, 0, 3.0, relative=True)
             time.sleep(4)
-            
+
         elif code == 5: # circular round trip
             with MotionCommander(scf, default_height=takeoff_height) as mc:
                 mc.circle_left(0.5, 0.4)
                 time.sleep(10)
-    # run the code below for testflight.
-    # with MotionCommander(scf, default_height=takeoff_height) as mc:
-    #     time.sleep(3)
-    #     mc.up(0.2)
-    #     time.sleep(3)
-    #     mc.stop()
 
 def initialize(scf):
     scf.cf.param.request_update_of_all_params()
@@ -106,7 +105,6 @@ if __name__ == '__main__':
     logFile = open('./log/'+str(now)[:19]+'.csv', 'w')
     cflib.crtp.init_drivers()
     try:
-        # '-'.join(list(map(str, [now.month, now.day, now.hour, now.minute, now.second])))
         cflib.crtp.init_drivers()
         with SyncCrazyflie(URI, cf=Crazyflie(rw_cache='./cache')) as scf:
             initialize(scf)
@@ -138,5 +136,3 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('Interrupted by user')
         logFile.close()
-        
-    
