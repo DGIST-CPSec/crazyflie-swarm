@@ -33,7 +33,7 @@ def param_deck_flow(_, value_str):
 def log_data(timestamp, data, logconf):
     dataAsList = list(map(str, [str(timestamp/1000), 
                                 data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], 
-                                data['stabilizer.roll'], data['stabilizer.pitch'], data['stabilizer.yaw']
+                                data['acc.x'], data['acc.y'], data['acc.z']
                                 ]))
     logFile.write(','.join(dataAsList)+"\n")
     print('\t'.join(dataAsList))
@@ -114,9 +114,9 @@ if __name__ == '__main__':
             logconf.add_variable('kalman.stateX', 'float')
             logconf.add_variable('kalman.stateY', 'float')
             logconf.add_variable('kalman.stateZ', 'float')
-            logconf.add_variable('stabilizer.roll', 'float')
-            logconf.add_variable('stabilizer.pitch', 'float')
-            logconf.add_variable('stabilizer.yaw', 'float')
+            logconf.add_variable('acc.x', 'float')
+            logconf.add_variable('acc.y', 'float')
+            logconf.add_variable('acc.z', 'float')
             scf.cf.log.add_config(logconf)
 
             logconf.data_received_cb.add_callback(log_data)
