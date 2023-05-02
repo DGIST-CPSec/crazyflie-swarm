@@ -1,4 +1,4 @@
 cache/
-log/
+# log/
 __pycache__/
 .vscode/

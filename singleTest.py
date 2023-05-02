@@ -16,7 +16,7 @@ from cflib.positioning.motion_commander import MotionCommander
 from cflib.utils import uri_helper
 
 
-URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E703')
+URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E705')
 deck_attached_event = Event()
 
 DEFAULT_HEIGHT = 0.5
@@ -75,19 +75,24 @@ def mission(scf, code):
             time.sleep(4)
             pass
         elif code == 4: # square round trip
-            hlcomm.go_to(  0.3,   0, 0, 0, 3.0, relative=True)
+            hlcomm.go_to(  0.5,   0, 0, 0, 3.0, relative=True)
             time.sleep(4)
-            hlcomm.go_to(    0, 0.3, 0, 0, 3.0, relative=True)
+            hlcomm.go_to(    0, 0.5, 0, 0, 3.0, relative=True)
             time.sleep(4)
-            hlcomm.go_to( -0.3,   0, 0, 0, 3.0, relative=True)
+            hlcomm.go_to( -0.5,   0, 0, 0, 3.0, relative=True)
             time.sleep(4)
-            hlcomm.go_to(    0,-0.3, 0, 0, 3.0, relative=True)
+            hlcomm.go_to(    0,-0.5, 0, 0, 3.0, relative=True)
             time.sleep(4)
 
         elif code == 5: # circular round trip
             with MotionCommander(scf, default_height=takeoff_height) as mc:
                 mc.circle_left(0.5, 0.4)
                 time.sleep(10)
+
+        else:
+            time.sleep(6)
+            
+        hlcomm.land(0, 3)
 
 def initialize(scf):
     scf.cf.param.request_update_of_all_params()
@@ -127,7 +132,7 @@ if __name__ == '__main__':
 
             # AREA: actual execution of mission
             logconf.start()
-            mission(scf, 0) # <- NOTE> You should change mission in the function, NOT HERE!!
+            mission(scf, 6) # <- NOTE> You should change mission in the function, NOT HERE!!
             logconf.stop()
 
         logFile.close()
