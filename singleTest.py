@@ -17,6 +17,7 @@ from cflib.utils import uri_helper
 
 
 URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E705')
+# Number 4 is stupid
 deck_attached_event = Event()
 
 DEFAULT_HEIGHT = 0.5
@@ -41,6 +42,8 @@ def log_data(timestamp, data, logconf):
 def mission(scf, code):
     takeoff_height = 0.40
     if code == 0:
+        time.sleep(3)
+        print('waited 3 seonds, begin to blink')
         for i in range(20):
             scf.cf.param.set_value('led.bitmask', 255)
             time.sleep(0.5)
@@ -49,7 +52,7 @@ def mission(scf, code):
     else:
         hlcomm = scf.cf.high_level_commander
         hlcomm.takeoff(takeoff_height, 3.0)
-        time.sleep(4)
+        time.sleep(8)
         if code == 1: # rotate in-place
             hlcomm.go_to(0.0, 0.0, 0.0,  180, 2.0, relative=True)
             time.sleep(4)
@@ -61,9 +64,9 @@ def mission(scf, code):
             time.sleep(4)
             
         elif code == 2: # linear round trip
-            hlcomm.go_to( 0.3,  0.3, 0, 0, 3.0, relative=True)
+            hlcomm.go_to( 0.7,  0.7, 0, 0, 3.0, relative=True)
             time.sleep(4)
-            hlcomm.go_to(-0.3, -0.3, 0, 0, 3.0, relative=True)
+            hlcomm.go_to(-0.7, -0.7, 0, 0, 3.0, relative=True)
             time.sleep(4)
 
         elif code == 3: # triangular round trip
@@ -90,28 +93,27 @@ def mission(scf, code):
                 time.sleep(10)
 
         else:
-            time.sleep(6)
+            time.sleep(6) # up-down
             
         hlcomm.land(0, 3)
 
 def initialize(scf):
     scf.cf.param.request_update_of_all_params()
-    scf.cf.param.set_value('health.startPropTest', '1') # propeller test before flight
-    time.sleep(5)
-
     scf.cf.param.set_value('kalman.resetEstimation', '1')
     time.sleep(0.1)
     scf.cf.param.set_value('kalman.resetEstimation', '0')
     print('kalman prediction reset')
+    scf.cf.param.set_value('health.startPropTest', '1') # propeller test before flight
+    time.sleep(5)
 
 
 if __name__ == '__main__':
     now = datetime.datetime.now()
     logFile = open('./log/'+str(now)[:19]+'.csv', 'w')
     cflib.crtp.init_drivers()
-    try:
-        cflib.crtp.init_drivers()
-        with SyncCrazyflie(URI, cf=Crazyflie(rw_cache='./cache')) as scf:
+
+    with SyncCrazyflie(URI, cf=Crazyflie(rw_cache='./cache')) as scf:
+        try:
             initialize(scf)
 
             # AREA: set log config
@@ -134,10 +136,9 @@ if __name__ == '__main__':
             logconf.start()
             mission(scf, 6) # <- NOTE> You should change mission in the function, NOT HERE!!
             logconf.stop()
+            logFile.close()
 
-        logFile.close()
-
-    # at escape by Ctrl+C
-    except KeyboardInterrupt:
-        print('Interrupted by user')
-        logFile.close()
+        except KeyboardInterrupt:
+            scf.cf.high_level_commander.stop()
+            print('Interrupted by user')
+            logFile.close()
