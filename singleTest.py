@@ -17,7 +17,7 @@ from cflib.crazyflie.localization import Localization as cflc
 from cflib.positioning.position_hl_commander import PositionHlCommander
 
 
-URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E705')
+URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E701')
 deck_attached_event = Event()
 
 
@@ -52,7 +52,7 @@ def mission_relative(scf, code):
     else:
         hlcomm = scf.cf.high_level_commander
         hlcomm.takeoff(takeoff_height, 1.0)
-        time.sleep(5)
+        time.sleep(2)
         print('[MISSION]: takeoff complete')
 
         if code == 1: # rotate in-place
@@ -197,28 +197,30 @@ def mission_phlc(scf, code):
             time.sleep(4)
             
         elif code == 2: # linear round trip
-            phlc.forward(0.5)
+            phlc.forward(1)
             time.sleep(4)
-            phlc.back(0.5)
+            phlc.back(1)
             time.sleep(4)
 
         elif code == 3: # triangular round trip
-            phlc.go_to( 0.4, 0.2)
+            phlc.go_to( 0.0, 1.2)
             time.sleep(4)
-            phlc.go_to(-0.4, 0.2)
-            time.sleep(4)
-            phlc.go_to( 0.0,-0.4)
-            time.sleep(4)
-
-        elif code == 4: # square round trip
-            phlc.go_to( 0.5, 0.0)
-            time.sleep(4)
-            phlc.go_to( 0.5, 0.5)
-            time.sleep(4)
-            phlc.go_to( 0.0, 0.5)
+            phlc.go_to(-1.2, 1.2)
             time.sleep(4)
             phlc.go_to( 0.0, 0.0)
             time.sleep(4)
+
+        elif code == 4: # square round trip
+            phlc.go_to( 0.6,  0.6)
+            time.sleep(3)
+            phlc.go_to( 0.6, -0.6)
+            time.sleep(3)
+            phlc.go_to(-0.6, -0.6)
+            time.sleep(3)
+            phlc.go_to(-0.6,  0.6)
+            time.sleep(3)
+            phlc.go_to( 0.0,  0.0)
+            time.sleep(3)
 
         elif code == 5: # circular round trip
             with MotionCommander(scf, default_height=takeoff_height) as mc:
@@ -240,6 +242,7 @@ if __name__ == '__main__':
     missNo    = int(input('Mission type: \t[0]Blink \t[1]In-position \t[2]Line \t[3]Triangle \t[4]Square \t[5]Circle \t[6]Up-down'))
     logFile = open('./log/'+str(now)[5:19]+'_'+str(comm_type)+str(missNo)+'.csv', 'w')
     cflib.crtp.init_drivers()
+    # pswtch = PowerSwitch(uri=URI)
 
     with SyncCrazyflie(URI, cf=Crazyflie(rw_cache='./cache')) as scf:
         try:
@@ -269,11 +272,11 @@ if __name__ == '__main__':
             # <- NOTE: You should change mission in the function, NOT HERE!!
             logconf.stop()
             logFile.close()
-            PowerSwitch.reboot_to_bootloader()  # FIXME: added, may not be working properly.
+            # pswtch.reboot_to_bootloader()  # FIXME: added, may not be working properly.
 
         except KeyboardInterrupt:
-            cflc.send_emergency_stop()          # FIXME: added, may not be working properly.
+            # cflc.send_emergency_stop()          # FIXME: added, may not be working properly.
             scf.cf.high_level_commander.stop()
             print('EMERGENCY STOP TRIGGERED')
-            PowerSwitch.platform_power_down()   # FIXME: added, may not be working properly.
+            # pswtch.platform_power_down()   # FIXME: added, may not be working properly.
             logFile.close()
