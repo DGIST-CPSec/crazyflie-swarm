@@ -4,6 +4,7 @@ import cflib.crtp
 from cflib.crazyflie.swarm import CachedCfFactory
 from cflib.crazyflie.swarm import Swarm
 from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
+from cflib.positioning.position_hl_commander import PositionHlCommander
 
 
 def activate_led_bit_mask(scf: SyncCrazyflie):
@@ -22,45 +23,41 @@ def light_check(scf: SyncCrazyflie):
 
 
 def take_off(scf: SyncCrazyflie):
-    commander = scf.cf.high_level_commander
-
-    commander.takeoff(1.0, 2.0)
+    phlc = PositionHlCommander(scf)
+    phlc.takeoff(1.0, 1.0)
     time.sleep(3)
 
-
 def land(scf: SyncCrazyflie):
-    commander = scf.cf.high_level_commander
-
-    commander.land(0.0, 2.0)
+    phlc = PositionHlCommander(scf)
+    phlc.land(0.0, 1.0)
     time.sleep(2)
-
-    commander.stop()
+    # phlc.stop()
 
 
 def run_square_sequence(scf: SyncCrazyflie):
     box_size = 1.0
     flight_time = 3.0
 
-    commander = scf.cf.high_level_commander
+    phlc = PositionHlCommander(scf)
 
-    commander.go_to(box_size, 0, 0, 0, flight_time, relative=True)
+    phlc.go_to(box_size, 0)
     time.sleep(flight_time)
 
-    commander.go_to(0, box_size, 0, 0, flight_time, relative=True)
+    phlc.go_to(0, box_size)
     time.sleep(flight_time)
 
-    commander.go_to(-box_size, 0, 0, 0, flight_time, relative=True)
+    phlc.go_to(-box_size, 0)
     time.sleep(flight_time)
 
-    commander.go_to(0, -box_size, 0, 0, flight_time, relative=True)
+    phlc.go_to(0, -box_size)
     time.sleep(flight_time)
 
 
 uris = [
-    'radio://0/80/2M/E7E7E7E701',
-    'radio://0/80/2M/E7E7E7E702',
     'radio://0/80/2M/E7E7E7E705',
     'radio://0/80/2M/E7E7E7E704',
+    'radio://0/80/2M/E7E7E7E703',
+    'radio://0/80/2M/E7E7E7E702',
     # Add more URIs if you want more copters in the swarm
 ]
 
@@ -76,33 +73,33 @@ uris = [
 #   3               2     .
 
 
-h = 0.0  # remain constant height similar to take off height
+h = 1.0  # remain constant height similar to take off height
 x0, y0 = +0.5, +0.5
 x1, y1 = -0.5, -0.5
 
 #    x   y   z  time
 sequence0 = [
-    (x1, y0, h, 3.0),
-    (x0, y1, h, 3.0),
-    (x0,  0, h, 3.0),
+    (x1, y0),
+    (x0, y1),
+    (x0,  0),
 ]
 
 sequence1 = [
-    (x0, y0, h, 3.0),
-    (x1, y1, h, 3.0),
-    (.0, y1, h, 3.0),
+    (x0, y0),
+    (x1, y1),
+    ( 0, y1),
 ]
 
 sequence2 = [
-    (x0, y1, h, 3.0),
-    (x1, y0, h, 3.0),
-    (x1,  0, h, 3.0),
+    (x0, y1),
+    (x1, y0),
+    (x1,  0),
 ]
 
 sequence3 = [
-    (x1, y1, h, 3.0),
-    (x0, y0, h, 3.0),
-    (.0, y0, h, 3.0),
+    (x1, y1),
+    (x0, y0),
+    (.0, y0),
 ]
 
 seq_args = {
@@ -115,16 +112,17 @@ seq_args = {
 
 def run_sequence(scf: SyncCrazyflie, sequence):
     cf = scf.cf
+    phlc = PositionHlCommander(scf)
+    phlc.set_default_height(1.0)
+    phlc.set_default_velocity(0.5)
+    phlc.set_landing_height(0.0)
 
     for arguments in sequence:
-        commander = scf.cf.high_level_commander
-
         x, y, z = arguments[0], arguments[1], arguments[2]
         duration = arguments[3]
-
         print('Setting position {} to cf {}'.format((x, y, z), cf.link_uri))
-        commander.go_to(x, y, z, 0, duration, relative=True)
-        time.sleep(duration)
+        phlc.go_to(x, y)
+        time.sleep( 3.0)
 
 
 if __name__ == '__main__':
