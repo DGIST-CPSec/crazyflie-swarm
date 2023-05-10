@@ -20,6 +20,18 @@ from cflib.positioning.position_hl_commander import PositionHlCommander
 URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E705')
 deck_attached_event = Event()
 
+
+def initialize(scf):
+    scf.cf.param.request_update_of_all_params()
+    scf.cf.param.set_value('kalman.resetEstimation', '1')
+    time.sleep(0.1)
+    scf.cf.param.set_value('kalman.resetEstimation', '0')
+    print('[INIT]: kalman prediction reset')
+    scf.cf.param.set_value('health.startPropTest', '1') # propeller test before flight
+    time.sleep(5)
+    print('[INIT]: initialization complete')
+
+
 def log_data(timestamp, data, logconf):
     dataAsList = list(map(str, [str(timestamp/1000), 
                                 data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], 
@@ -28,8 +40,7 @@ def log_data(timestamp, data, logconf):
     logFile.write(','.join(dataAsList)+"\n")
 
 def mission_relative(scf, code):
-
-    takeoff_height = 0.40
+    takeoff_height = 1.0
     if code == 0:
         time.sleep(3)
         print('[MISSION]: begin to blink')
@@ -92,7 +103,7 @@ def mission_relative(scf, code):
 
 
 def mission_absolute(scf, code):
-    takeoff_height = 0.40
+    takeoff_height = 1.0
     if code == 0:
         time.sleep(3)
         print('[MISSION]: begin to blink')
@@ -157,6 +168,7 @@ def mission_absolute(scf, code):
         hlcomm.land(0, 3)
         print('[MISSION]: landing')
 
+
 def mission_phlc(scf, code):
     takeoff_height = 1.0
     if code == 0:
@@ -220,23 +232,14 @@ def mission_phlc(scf, code):
         phlc.land()
         print('[MISSION]: landing')
 
-def initialize(scf):
-    scf.cf.param.request_update_of_all_params()
-    scf.cf.param.set_value('kalman.resetEstimation', '1')
-    time.sleep(0.1)
-    scf.cf.param.set_value('kalman.resetEstimation', '0')
-    print('[INIT]: kalman prediction reset')
-    scf.cf.param.set_value('health.startPropTest', '1') # propeller test before flight
-    time.sleep(5)
-    print('[INIT]: initialization complete')
+
 
 if __name__ == '__main__':
     now = datetime.datetime.now()
-    logFile = open('./log/'+str(now)[5:19]+'.csv', 'w')
-    cflib.crtp.init_drivers()
     comm_type = int(input('Command Type: \t[1]Relative \t[2]Absolute \t[3]PHLComm'))
     missNo    = int(input('Mission type: \t[0]Blink \t[1]In-position \t[2]Line \t[3]Triangle \t[4]Square \t[5]Circle \t[6]Up-down'))
-    misnNo = 6
+    logFile = open('./log/'+str(now)[5:19]+'_'+str(comm_type)+str(missNo)+'.csv', 'w')
+    cflib.crtp.init_drivers()
 
     with SyncCrazyflie(URI, cf=Crazyflie(rw_cache='./cache')) as scf:
         try:
