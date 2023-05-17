@@ -15,9 +15,10 @@ from cflib.utils import uri_helper
 from cflib.utils.power_switch import PowerSwitch
 from cflib.crazyflie.localization import Localization as cflc
 from cflib.positioning.position_hl_commander import PositionHlCommander
+from cflib.utils.power_switch import PowerSwitch as pswtch
 
 
-URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E701')
+URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E70A')
 deck_attached_event = Event()
 
 
@@ -180,7 +181,7 @@ def mission_phlc(scf, code):
             scf.cf.param.set_value('led.bitmask', 0)
             time.sleep(0.5)
     else:
-        phlc = PositionHlCommander(scf)
+        phlc = PositionHlCommander(scf, x = 1.0, y= -1.0, z = 0.0)
         phlc.take_off(takeoff_height, 1.0)
         time.sleep(5)
         print('[MISSION]: takeoff complete')
@@ -272,6 +273,7 @@ if __name__ == '__main__':
             # <- NOTE: You should change mission in the function, NOT HERE!!
             logconf.stop()
             logFile.close()
+            pswtch.reboot_to_fw(scf)
             # pswtch.reboot_to_bootloader()  # FIXME: added, may not be working properly.
 
         except KeyboardInterrupt:
@@ -279,4 +281,5 @@ if __name__ == '__main__':
             scf.cf.high_level_commander.stop()
             print('EMERGENCY STOP TRIGGERED')
             # pswtch.platform_power_down()   # FIXME: added, may not be working properly.
+            pswtch.platform_power_down(scf)
             logFile.close()
