@@ -3,7 +3,7 @@
 #     https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/user-guides/sbs_motion_commander/
 #     https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/user-guides/sbs_swarm_interface/
 
-import time, datetime
+import time, datetime, os
 
 import cflib.crtp
 from cflib.crazyflie import Crazyflie
@@ -107,7 +107,19 @@ if __name__ == '__main__':
     now = datetime.datetime.now()
     missNo    = int(input('Mission type: \n[0]Blink \t[1]In-position \t[2]Line \t[3]Triangle \t[4]Square \t[5]Circle \t[6]Up-down\n >>'))
     init_pos = list(map(int, input('start position- x, y, z (m) >> ').split(' ')))
-    logFile = open('./log/'+str(now)[5:19]+'_drone'+str(drone_addr[-2:])+'_mission'+str(missNo)+'.csv', 'w')
+    miss_type = ['NO', 'UD', 'LR', 'TR', 'SQ', 'CR', 'TO']
+    # Mission Codes:
+    # 0: NOOP just blink
+    # 1: UPDN up-down
+    # 2: LINE linear
+    # 3: TRIA triangular
+    # 4: SQUA square
+    # 5: CIRC circular
+    # 6: TAKO takeoff only
+    os.mkdir('./log/'+str(now)[5:10])
+    logFile = open('./log/'
+                   +str(now)[5:10]+'/'
+                   +str(now)[11:19]+'_drone'+str(drone_addr[-2:])+'_'+miss_type[missNo]+'.csv', 'w')
     cflib.crtp.init_drivers()
 
     with SyncCrazyflie(URI, cf=Crazyflie(rw_cache='./cache')) as scf:
