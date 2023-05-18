@@ -15,7 +15,7 @@ from cflib.utils.power_switch import PowerSwitch
 from cflib.positioning.position_hl_commander import PositionHlCommander
 
 
-drone_addr = 'radio://0/80/2M/E7E7E7E70A'
+drone_addr = 'radio://0/80/2M/E7E7E7E70B'
 URI = uri_helper.uri_from_env(default=drone_addr)
 
 
@@ -116,7 +116,10 @@ if __name__ == '__main__':
     # 4: SQUA square
     # 5: CIRC circular
     # 6: TAKO takeoff only
-    os.mkdir('./log/'+str(now)[5:10])
+    logpath ='./log/'+str(now)[5:10]+'/' 
+    if not os.path.exists(logpath):
+        os.mkdir(logpath)
+    
     logFile = open('./log/'
                    +str(now)[5:10]+'/'
                    +str(now)[11:19]+'_drone'+str(drone_addr[-2:])+'_'+miss_type[missNo]+'.csv', 'w')
@@ -139,14 +142,14 @@ if __name__ == '__main__':
 
             # AREA: actual execution of mission
             logconf.start()
-            mission_phlc(scf, missNo)
+            mission_phlc(scf, missNo, pos=init_pos)
             # <- NOTE: You should change mission in the function, NOT HERE!!
             logconf.stop()
             logFile.close()
-            PowerSwitch.reboot_to_fw()
+            # PowerSwitch.reboot_to_fw()
 
         except KeyboardInterrupt:
             scf.cf.high_level_commander.stop()
             print('EMERGENCY STOP TRIGGERED')
             logFile.close()
-            PowerSwitch.platform_power_down()
+            # PowerSwitch.platform_power_down()
