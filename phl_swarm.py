@@ -18,22 +18,33 @@ drones = [
     'radio://0/80/2M/E7E7E7E70D',
     'radio://0/80/2M/E7E7E7E70E',
 ]
+
 initialPos = [
     [0.0, 0.0, 0.0],
     [1.0, 0.0, 0.0],
     [2.0, 0.0, 0.0],
     [0.0, 1.0, 0.0],
     [1.0, 1.0, 0.0],
+    [2.0, 1.0, 0.0],
+]
+
+moveDelta = [
+    [1.0, 0.0, 0.0],
+    [1.0, 0.0, 0.0],
+    [0.0, 1.0, 0.0],
+    [-1.0, 0.0, 0.0],
+    [-1.0, 0.0, 0.0],
+    [0.0, -1.0, 0.0],
 ]
 
 missNo    = int(input('Mission type: \n[0]Blink \t[1]In-position \t[2]Line \t[6]Up-down\n >>'))
 
 arguments = {
-    drones[0] : [initialPos[0], missNo],
-    drones[1] : [initialPos[1], missNo],
-    drones[2] : [initialPos[2], missNo],
-    drones[3] : [initialPos[3], missNo],
-    drones[4] : [initialPos[4], missNo],
+    drones[0] : [0, missNo],
+    drones[1] : [1, missNo],
+    drones[2] : [2, missNo],
+    drones[3] : [3, missNo],
+    drones[4] : [4, missNo],
 }
 
 """ def log_data(timestamp, data, logconf):
@@ -43,7 +54,7 @@ arguments = {
                                 ]))
     logFile.write(','.join(dataAsList)+"\n") """
 
-def mission(scf: SyncCrazyflie, initPos, code):
+def mission(scf: SyncCrazyflie, posNo, code):
     """ logFile = open('./swarm/'+str(now)[5:19]+'_mission'+str(missNo)+'_'+scf.cf.link_uri+'.csv', 'w')
     logconf = LogConfig(name='Position', period_in_ms=10)
     logconf.add_variable('kalman.stateX', 'float')
@@ -65,7 +76,11 @@ def mission(scf: SyncCrazyflie, initPos, code):
             scf.cf.param.set_value('led.bitmask', 0)
             time.sleep(0.5)
     else:
-        phlc = PositionHlCommander(scf, x = initPos[0], y = initPos[1], z = initPos[2])
+        phlc = PositionHlCommander(scf, 
+                                   x = initialPos[posNo][0], 
+                                   y = initialPos[posNo][1], 
+                                   z = initialPos[posNo][2]
+                                   )
         phlc.take_off(takeoff_height, 1.0)
         time.sleep(5)
         print(f'[{scf.cf.link_uri}]: takeoff complete')
@@ -82,6 +97,31 @@ def mission(scf: SyncCrazyflie, initPos, code):
             time.sleep(4)
             phlc.back(1)
             time.sleep(4)
+        elif code == 3:
+            # 코드 검증이 필요함
+            """ 
+            ============= position =============
+            ↕ y
+            3[3,0]   4[4,0]   5[5,0]
+            0[0,0]   1[1,0]   2[2,0]   → x
+            ====================================
+
+            ============= move for =============
+            ↕ y
+            3[0,-1]   4[-1,0]   5[-1,0]
+            0[+1,0]   1[+1,0]   2[0,+1]   → x
+            ====================================
+
+            드론이 각 위치에 있을때, 해당 위치에서 움직여야 할 값만큼 움직이게 짰음
+            """
+            position = posNo
+            phlc.move_distance(
+                moveDelta[position][0], 
+                moveDelta[position][1], 
+                moveDelta[position][2])
+            time.sleep(4)
+            position = (posNo+1)%6
+
         else:
             time.sleep(6)
         print(f'[{scf.cf.link_uri}]: mission complete')
