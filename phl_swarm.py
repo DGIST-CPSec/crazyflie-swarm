@@ -29,9 +29,9 @@ initialPos = [
 ]
 
 moveDelta = [
-    [1.0, 0.0, 0.0],
-    [1.0, 0.0, 0.0],
-    [0.0, 1.0, 0.0],
+    [+1.0, 0.0, 0.0],
+    [+1.0, 0.0, 0.0],
+    [0.0, +1.0, 0.0],
     [-1.0, 0.0, 0.0],
     [-1.0, 0.0, 0.0],
     [0.0, -1.0, 0.0],
@@ -55,16 +55,16 @@ arguments = {
     logFile.write(','.join(dataAsList)+"\n") """
 
 def mission(scf: SyncCrazyflie, posNo, code):
-    """ logFile = open('./swarm/'+str(now)[5:19]+'_mission'+str(missNo)+'_'+scf.cf.link_uri+'.csv', 'w')
-    logconf = LogConfig(name='Position', period_in_ms=10)
-    logconf.add_variable('kalman.stateX', 'float')
-    logconf.add_variable('kalman.stateY', 'float')
-    logconf.add_variable('kalman.stateZ', 'float')
-    logconf.add_variable('acc.x', 'float')
-    logconf.add_variable('acc.y', 'float')
-    logconf.add_variable('acc.z', 'float')
-    scf.cf.log.add_config(logconf)
-    logconf.data_received_cb.add_callback(log_data) """
+    # logFile = open('./swarm/'+str(now)[5:19]+'_mission'+str(missNo)+'_'+scf.cf.link_uri+'.csv', 'w')
+    # logconf = LogConfig(name='Position', period_in_ms=10)
+    # logconf.add_variable('kalman.stateX', 'float')
+    # logconf.add_variable('kalman.stateY', 'float')
+    # logconf.add_variable('kalman.stateZ', 'float')
+    # logconf.add_variable('acc.x', 'float')
+    # logconf.add_variable('acc.y', 'float')
+    # logconf.add_variable('acc.z', 'float')
+    # scf.cf.log.add_config(logconf)
+    # logconf.data_received_cb.add_callback(log_data)
 
     takeoff_height = 1.0
     if code == 0:
