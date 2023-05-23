@@ -13,10 +13,12 @@ from cflib.positioning.motion_commander import MotionCommander
 from cflib.utils import uri_helper
 from cflib.utils.power_switch import PowerSwitch
 from cflib.positioning.position_hl_commander import PositionHlCommander
+from cflib.utils.power_switch import PowerSwitch
 
 
-drone_addr = 'radio://0/80/2M/E7E7E7E70B'
+drone_addr = 'radio://0/80/2M/E7E7E7E701'
 URI = uri_helper.uri_from_env(default=drone_addr)
+psw = PowerSwitch(uri=drone_addr)
 
 
 def initialize(scf):
@@ -96,7 +98,7 @@ def mission_phlc(scf, code, pos):
                 time.sleep(10)
 
         else:
-            time.sleep(6) # up-down
+            time.sleep(5) # up-down
             
         print('[MISSION]: mission command complete')
         phlc.land()
@@ -146,10 +148,10 @@ if __name__ == '__main__':
             # <- NOTE: You should change mission in the function, NOT HERE!!
             logconf.stop()
             logFile.close()
-            # PowerSwitch.reboot_to_fw()
+            print('[MAIN]: mission complete. Rebooting...')
+            psw.reboot_to_fw()
 
         except KeyboardInterrupt:
-            scf.cf.high_level_commander.stop()
-            print('EMERGENCY STOP TRIGGERED')
+            psw.platform_power_down()
+            print('\n\n[MAIN]: EMERGENCY STOP TRIGGERED\n['+str(hex(psw.address[4]))+']: SHUTDOWN\n')
             logFile.close()
-            # PowerSwitch.platform_power_down()

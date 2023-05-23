@@ -19,6 +19,14 @@ drones = [
     'radio://0/80/2M/E7E7E7E70E',
 ]
 
+psws = [
+    PowerSwitch(drones[0]),
+    PowerSwitch(drones[1]),
+    PowerSwitch(drones[2]),
+    PowerSwitch(drones[3]),
+    PowerSwitch(drones[4]),
+]
+
 initialPos = [
     [0.0, 0.0, 0.0],
     [1.0, 0.0, 0.0],
@@ -62,88 +70,85 @@ def mission(scf: SyncCrazyflie, posNo, code):
     # logFile = open('./swarm/'
     #                 +str(now)[5:10]+'/'
     #                 +str(now)[11:19]+'_'+drone_ID[posNo]+'_'+miss_type[code]+'.csv', 'w')
-    try:
-        # logFile = open('./swarm/'+str(now)[5:19]+'_mission'+str(missNo)+'_'+scf.cf.link_uri+'.csv', 'w')
-        # logconf = LogConfig(name='Position', period_in_ms=10)
-        # logconf.add_variable('kalman.stateX', 'float')
-        # logconf.add_variable('kalman.stateY', 'float')
-        # logconf.add_variable('kalman.stateZ', 'float')
-        # logconf.add_variable('acc.x', 'float')
-        # logconf.add_variable('acc.y', 'float')
-        # logconf.add_variable('acc.z', 'float')
-        # scf.cf.log.add_config(logconf)
-        # logconf.data_received_cb.add_callback(log_data)
+    # logFile = open('./swarm/'+str(now)[5:19]+'_mission'+str(missNo)+'_'+scf.cf.link_uri+'.csv', 'w')
+    # logconf = LogConfig(name='Position', period_in_ms=10)
+    # logconf.add_variable('kalman.stateX', 'float')
+    # logconf.add_variable('kalman.stateY', 'float')
+    # logconf.add_variable('kalman.stateZ', 'float')
+    # logconf.add_variable('acc.x', 'float')
+    # logconf.add_variable('acc.y', 'float')
+    # logconf.add_variable('acc.z', 'float')
+    # scf.cf.log.add_config(logconf)
+    # logconf.data_received_cb.add_callback(log_data)
 
-        takeoff_height = 1.0
-        # logconf.start()
-        if code == 0:
+    takeoff_height = 1.0
+    # logconf.start()
+    if code == 0:
+        time.sleep(3)
+        print('[MISSION]: begin to blink')
+        for i in range(20):
+            scf.cf.param.set_value('led.bitmask', 255)
+            time.sleep(0.5)
+            scf.cf.param.set_value('led.bitmask', 0)
+            time.sleep(0.5)
+    else:
+        phlc = PositionHlCommander(scf, 
+                                x = initialPos[posNo][0], 
+                                y = initialPos[posNo][1], 
+                                z = initialPos[posNo][2]
+                                )
+        phlc.take_off(takeoff_height, 1.0)
+        time.sleep(5)
+        print(f'[{scf.cf.link_uri}]: takeoff complete')
+        phlc.set_default_height(takeoff_height)
+        phlc.set_default_velocity(0.5)
+        phlc.set_landing_height(0.0)
+
+        if code == 1:
+            phlc.up(0.5)
             time.sleep(3)
-            print('[MISSION]: begin to blink')
-            for i in range(20):
-                scf.cf.param.set_value('led.bitmask', 255)
-                time.sleep(0.5)
-                scf.cf.param.set_value('led.bitmask', 0)
-                time.sleep(0.5)
-        else:
-            phlc = PositionHlCommander(scf, 
-                                    x = initialPos[posNo][0], 
-                                    y = initialPos[posNo][1], 
-                                    z = initialPos[posNo][2]
-                                    )
-            phlc.take_off(takeoff_height, 1.0)
-            time.sleep(5)
-            print(f'[{scf.cf.link_uri}]: takeoff complete')
-            phlc.set_default_height(takeoff_height)
-            phlc.set_default_velocity(0.5)
-            phlc.set_landing_height(0.0)
+            phlc.down(0.5)
+            time.sleep(3)
 
-            if code == 1:
-                phlc.up(0.5)
-                time.sleep(3)
-                phlc.down(0.5)
-                time.sleep(3)
+        elif code == 2:
+            phlc.forward(1)
+            time.sleep(4)
+            phlc.back(1)
+            time.sleep(4)
 
-            elif code == 2:
-                phlc.forward(1)
-                time.sleep(4)
-                phlc.back(1)
-                time.sleep(4)
+        elif code == 3:
+            position = posNo
+            phlc.move_distance(
+                moveDelta[position][0], 
+                moveDelta[position][1], 
+                moveDelta[position][2])
+            time.sleep(1.5)
+            phlc.move_distance(
+                -moveDelta[position][0], 
+                -moveDelta[position][1], 
+                -moveDelta[position][2])
+            time.sleep(1.5)
 
-            elif code == 3:
-                position = posNo
+        elif code == 4:
+            # 코드 검증이 필요함
+            position = posNo
+            for i in range(6):
                 phlc.move_distance(
                     moveDelta[position][0], 
                     moveDelta[position][1], 
                     moveDelta[position][2])
-                time.sleep(1.5)
-                phlc.move_distance(
-                    -moveDelta[position][0], 
-                    -moveDelta[position][1], 
-                    -moveDelta[position][2])
-                time.sleep(1.5)
+                time.sleep(1)
+                position = (position+1)%6
 
-            elif code == 4:
-                # 코드 검증이 필요함
-                position = posNo
-                for i in range(6):
-                    phlc.move_distance(
-                        moveDelta[position][0], 
-                        moveDelta[position][1], 
-                        moveDelta[position][2])
-                    time.sleep(1)
-                    position = (position+1)%6
+        else:
+            time.sleep(6)
+        print(f'[{scf.cf.link_uri}]: mission complete')
+        phlc.land()
+        print(f'[{scf.cf.link_uri}]: landing')
+    # logconf.stop()
+    # logFile.close()
 
-            else:
-                time.sleep(6)
-            print(f'[{scf.cf.link_uri}]: mission complete')
-            phlc.land()
-            print(f'[{scf.cf.link_uri}]: landing')
-        # logconf.stop()
-        # logFile.close()
-    except KeyboardInterrupt:
-        scf.cf.high_level_commander.stop()
-        print('EMERGENCY STOP TRIGGERED')
-        # logFile.close()
+    # logFile.close()
 
 if __name__ == '__main__':
     now = datetime.datetime.now()
@@ -157,5 +162,11 @@ if __name__ == '__main__':
         # logpath ='./swarm/'+str(now)[5:10]+'/' 
         # if not os.path.exists(logpath):
             # os.mkdir(logpath)
-        swarm.parallel_safe(mission, args_dict=arguments)
+        try:
+            swarm.parallel_safe(mission, args_dict=arguments)
+        except KeyboardInterrupt:
+            print('EMERGENCY STOP TRIGGERED')
+            for i in psws:
+                i.platform_power_down()
+                print('['+str(hex(i.address[4]))+']: SHUTDOWN')
 
