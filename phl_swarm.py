@@ -47,21 +47,25 @@ arguments = {
     drones[4] : [4, missNo],
 }
 
-# def log_data(timestamp, data, logFile):
-#     dataAsList = list(map(str, [str(timestamp/1000), 
-#                                 data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'], 
-#                                 data['acc.x'], data['acc.y'], data['acc.z']
-#                                 ]))
-#     logFile.write(','.join(dataAsList)+"\n")
+""" def log_data(timestamp, data, logFile):
+    x0, y0, z0 = data[drones[0]]
+    x1, y1, z1 = data[drones[1]]
+    x2, y2, z2 = data[drones[2]]
+    x3, y3, z3 = data[drones[3]]
+    x4, y4, z4 = data[drones[4]]
+    dataAsList = list(map(str, [str(timestamp/1000), 
+                                x0, y0, z0, x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4,
+                                ]))
+    logFile.write(','.join(dataAsList)+"\n") """
 
 miss_type = ['NO', 'UD', 'LR', 'TR', 'SQ', 'CR', 'TO']
 drone_ID = ['0A', '0B', '0C', '0D', '0E']
 
 
 def mission(scf: SyncCrazyflie, posNo, code):
-    # logFile = open('./swarm/'
-    #                 +str(now)[5:10]+'/'
-    #                 +str(now)[11:19]+'_'+drone_ID[posNo]+'_'+miss_type[code]+'.csv', 'w')
+    logFile = open('./swarm/'
+                    +str(now)[5:10]+'/'
+                    +str(now)[11:19]+'_'+drone_ID[posNo]+'_'+miss_type[code]+'.csv', 'w')
     try:
         # logFile = open('./swarm/'+str(now)[5:19]+'_mission'+str(missNo)+'_'+scf.cf.link_uri+'.csv', 'w')
         # logconf = LogConfig(name='Position', period_in_ms=10)
@@ -73,6 +77,7 @@ def mission(scf: SyncCrazyflie, posNo, code):
         # logconf.add_variable('acc.z', 'float')
         # scf.cf.log.add_config(logconf)
         # logconf.data_received_cb.add_callback(log_data)
+        data = Swarm.get_estimated_positions()
 
         takeoff_height = 1.0
         # logconf.start()
@@ -154,8 +159,6 @@ if __name__ == '__main__':
         print("Connected to Swarm CFs")
         """ swarm.reset_estimators()
         print('Estimators reset') """
-        # logpath ='./swarm/'+str(now)[5:10]+'/' 
-        # if not os.path.exists(logpath):
-            # os.mkdir(logpath)
+        
         swarm.parallel_safe(mission, args_dict=arguments)
 
