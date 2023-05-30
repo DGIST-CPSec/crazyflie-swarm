@@ -24,6 +24,7 @@ drones = [
     'radio://0/80/2M/E7E7E7E70E',
 ]
 
+
 psws = [PowerSwitch(uri) for uri in drones]
 
 leader = [0.0, 1.0, 0.0]
@@ -32,14 +33,20 @@ distance = [
     [+0.0, +0.0,  0.0],
     [-0.5, -0.5, -0.3], [+0.5, -0.5, -0.3],
     [-1.0, -1.0, -0.6], [+0.0, -1.0, -0.6], [+1.0, -1.0, -0.6],
-    [-1.5, -1.5, -0.9], [-0.5, -1.5, -0.9], [+0.5, -1.5, -0.9], [+1.5, -1.5, -0.9],
+    [-1.5, -1.5, -0.9], [-0.5, -1.5, -0.9], 
+    [+0.5, -1.5, -0.9], 
+    [+1.5, -1.5, -0.9],
 ]
 
-hlcs = [HighLevelCommander(scf) for scf in drones]
+# factory = Factory()
+
+# scfs = [factory.construct(uri) for uri in drones]
+
+
 
 def get_next_position(leader, distance):
     """ calculates next position of follower drones """
-    return [[sum(x) for x in zip(leader, distance[i])] for i in range(10)]
+    return [[sum(x) for x in zip(leader, distance[i])] for i in range(len(drones))]
 
 def order_follow(timestamp, data, logconf):
     print(timestamp,":", data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'])
@@ -54,8 +61,8 @@ def order_follow(timestamp, data, logconf):
 
 def leader_mission(scf, code, pos):
     takeoff_height = 1.6
-    lhlc = HighLevelCommander(scf)
-    lhlc.take_off(takeoff_height, 2.0)
+    lhlc = scf.cf.high_level_commander
+    # lhlc.take_off(takeoff_height, 2.0)
     time.sleep(5)
     print('[MISSION]: takeoff complete')
     # DEFAULT = 1.0
@@ -92,11 +99,6 @@ def leader_mission(scf, code, pos):
         lhlc.go_to( 0.0,  0.0, 0, 0, 2, relative=True)
         time.sleep(3)
 
-    elif code == 5: # circular round trip
-        with MotionCommander(scf, default_height=takeoff_height) as mc:
-            mc.circle_left(0.5, 0.4)
-            time.sleep(10)
-
     else:
         time.sleep(5) # up-down
         
@@ -107,22 +109,31 @@ def leader_mission(scf, code, pos):
 
 
 if __name__ == '__main__':
-    logconf = LogConfig(name='Position', period_in_ms=10)
-    # DANGER: follow calculation in every 10 ms may be too fast: 
-    # slow down if not working well
-    logconf.add_variable('kalman.stateX', 'float')
-    logconf.add_variable('kalman.stateY', 'float')
-    logconf.add_variable('kalman.stateZ', 'float')
-    leader_scf = SyncCrazyflie(drones[0])
-    leader_scf.cf.log.add_config(logconf)
-    logconf.data_received_cb.add_callback(order_follow)
-    mission = int(input('Enter mission code: [1] up-down, [2] forward-backward, [3] left-right, [4] square, [5] circle: '))
-
     try:
+        # DANGER: follow calculation in every 10 ms may be too fast: 
+        cflib.crtp.init_drivers()
+        print("initialized")
+
+        scfs = [SyncCrazyflie(uri, cf=Crazyflie(rw_cache='./cache')) for uri in drones]
+        for scf in scfs:
+            scf.open_link()
+            print("opened link: ", scf.cf.link_uri)
+
+        hlcs = [scf.cf.high_level_commander for scf in scfs]
+        # slow down if not working well
+        mission = int(input('Enter mission code: [1] up-down, [2] forward-backward, [3] left-right, [4] square'))
+        logconf = LogConfig(name='Position', period_in_ms=10)
+        logconf.add_variable('kalman.stateX', 'float')
+        logconf.add_variable('kalman.stateY', 'float')
+        logconf.add_variable('kalman.stateZ', 'float')
+        leader_scf = scfs[0]
+        leader_scf.cf.log.add_config(logconf)
+        logconf.data_received_cb.add_callback(order_follow)
+        print('[MAIN]: starting mission')
         logconf.start()
         for drone in hlcs:
             drone.takeoff(1.0, 2.0)
-        leader_mission(leader_scf, missNo, pos=leader)
+        leader_mission(leader_scf, mission, pos=leader)
         logconf.stop()
         for psw in psws:
             psw.reboot_to_fw()
