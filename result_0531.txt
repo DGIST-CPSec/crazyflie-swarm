@@ -1,0 +1,94 @@
+minki-cps@minkicps:~/crazyflie-swarm$  cd /home/minki-cps/crazyflie-swarm ; /usr/bin/env /bin/python3 /home/minki-cps/.vscode-insiders/extensions/ms-python.python-2023.8.0/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 55063 -- /home/minki-cps/crazyflie-swarm/dynamicSwarm.py 
+initialized
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E701
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E702
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E703
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E704
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E705
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E70A
+minki-cps@minkicps:~/crazyflie-swarm$  cd /home/minki-cps/crazyflie-swarm ; /usr/bin/env /bin/python3 /home/minki-cps/.vscode-insiders/extensions/ms-python.python-2023.8.0/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 51103 -- /home/minki-cps/crazyflie-swarm/dynamicSwarm.py 
+initialized
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E701
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E702
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E703
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E704
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E705
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E70A
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E70B
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E70C
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E70D
+[SWARM] opened link:  radio://0/80/2M/E7E7E7E70E
+Enter mission code: [1] up-down, [2] forward-backward, [3] left-right, [4] square, [0] hold: 
+>>> 1
+[MAIN]: starting mission
+[MISSION]: takeoff complete
+logconf start
+in leader mission 1
+goto sent
+164917 : {'kalman.stateX': -0.016674092039465904, 'kalman.stateY': 1.010939598083496, 'kalman.stateZ': 0.45905837416648865}
+165017 : {'kalman.stateX': -0.0074663665145635605, 'kalman.stateY': 1.0062837600708008, 'kalman.stateZ': 0.4829100966453552}
+165117 : {'kalman.stateX': 0.002282780595123768, 'kalman.stateY': 1.0008511543273926, 'kalman.stateZ': 0.516284167766571}
+165217 : {'kalman.stateX': 0.011685628443956375, 'kalman.stateY': 0.9948356747627258, 'kalman.stateZ': 0.5486164093017578}
+165317 : {'kalman.stateX': 0.01975059323012829, 'kalman.stateY': 0.988923192024231, 'kalman.stateZ': 0.5835199356079102}
+165417 : {'kalman.stateX': 0.026587212458252907, 'kalman.stateY': 0.9831492900848389, 'kalman.stateZ': 0.6191025376319885}
+165517 : {'kalman.stateX': 0.032179344445466995, 'kalman.stateY': 0.9776021838188171, 'kalman.stateZ': 0.6564369797706604}
+165617 : {'kalman.stateX': 0.036504462361335754, 'kalman.stateY': 0.9723055958747864, 'kalman.stateZ': 0.6947685480117798}
+165717 : {'kalman.stateX': 0.03953878581523895, 'kalman.stateY': 0.9673066139221191, 'kalman.stateZ': 0.734891414642334}
+165817 : {'kalman.stateX': 0.04121794179081917, 'kalman.stateY': 0.962719202041626, 'kalman.stateZ': 0.7747727036476135}
+165917 : {'kalman.stateX': 0.04157901927828789, 'kalman.stateY': 0.9585155844688416, 'kalman.stateZ': 0.81502366065979}
+166017 : {'kalman.stateX': 0.040644045919179916, 'kalman.stateY': 0.9546865820884705, 'kalman.stateZ': 0.8557752966880798}
+166117 : {'kalman.stateX': 0.038395803421735764, 'kalman.stateY': 0.9512271285057068, 'kalman.stateZ': 0.8965644836425781}
+166217 : {'kalman.stateX': 0.034823376685380936, 'kalman.stateY': 0.94814532995224, 'kalman.stateZ': 0.9371778964996338}
+166317 : {'kalman.stateX': 0.029880058020353317, 'kalman.stateY': 0.945457935333252, 'kalman.stateZ': 0.9777814745903015}
+166417 : {'kalman.stateX': 0.0235566608607769, 'kalman.stateY': 0.9431700110435486, 'kalman.stateZ': 1.0188106298446655}
+166517 : {'kalman.stateX': 0.015851352363824844, 'kalman.stateY': 0.9412771463394165, 'kalman.stateZ': 1.0602457523345947}
+166617 : {'kalman.stateX': 0.006776333786547184, 'kalman.stateY': 0.9397613406181335, 'kalman.stateZ': 1.1018822193145752}
+166717 : {'kalman.stateX': -0.0036901209969073534, 'kalman.stateY': 0.9386530518531799, 'kalman.stateZ': 1.143843412399292}
+166817 : {'kalman.stateX': -0.015545075759291649, 'kalman.stateY': 0.9379695653915405, 'kalman.stateZ': 1.187069058418274}
+166917 : {'kalman.stateX': -0.028788622468709946, 'kalman.stateY': 0.9377086162567139, 'kalman.stateZ': 1.2304438352584839}
+167017 : {'kalman.stateX': -0.04342247173190117, 'kalman.stateY': 0.9378705620765686, 'kalman.stateZ': 1.2738715410232544}
+167117 : {'kalman.stateX': -0.05959409102797508, 'kalman.stateY': 0.938407838344574, 'kalman.stateZ': 1.3179068565368652}
+167217 : {'kalman.stateX': -0.07701350003480911, 'kalman.stateY': 0.9393284320831299, 'kalman.stateZ': 1.362451434135437}
+167317 : {'kalman.stateX': -0.09584224224090576, 'kalman.stateY': 0.9406822919845581, 'kalman.stateZ': 1.407228946685791}
+167417 : {'kalman.stateX': -0.11607781052589417, 'kalman.stateY': 0.9425081610679626, 'kalman.stateZ': 1.4521746635437012}
+167517 : {'kalman.stateX': -0.13767284154891968, 'kalman.stateY': 0.9447526931762695, 'kalman.stateZ': 1.4975076913833618}
+sleep done
+goto sent
+167617 : {'kalman.stateX': -0.16056758165359497, 'kalman.stateY': 0.9473212361335754, 'kalman.stateZ': 1.5439469814300537}
+167717 : {'kalman.stateX': -0.18470323085784912, 'kalman.stateY': 0.950169563293457, 'kalman.stateZ': 1.5911991596221924}
+167817 : {'kalman.stateX': -0.21006593108177185, 'kalman.stateY': 0.9532584547996521, 'kalman.stateZ': 1.6399083137512207}
+167917 : {'kalman.stateX': -0.23660053312778473, 'kalman.stateY': 0.9565766453742981, 'kalman.stateZ': 1.6887376308441162}
+168017 : {'kalman.stateX': -0.26426345109939575, 'kalman.stateY': 0.9600940346717834, 'kalman.stateZ': 1.737662434577942}
+168117 : {'kalman.stateX': -0.29305627942085266, 'kalman.stateY': 0.9637789726257324, 'kalman.stateZ': 1.7867568731307983}
+168217 : {'kalman.stateX': -0.3230227530002594, 'kalman.stateY': 0.967583954334259, 'kalman.stateZ': 1.836197018623352}
+168317 : {'kalman.stateX': -0.3542332351207733, 'kalman.stateY': 0.9715445041656494, 'kalman.stateZ': 1.8861563205718994}
+168417 : {'kalman.stateX': -0.38703465461730957, 'kalman.stateY': 0.975735604763031, 'kalman.stateZ': 1.9361281394958496}
+168517 : {'kalman.stateX': -0.4208369553089142, 'kalman.stateY': 0.9800657629966736, 'kalman.stateZ': 1.9861128330230713}
+168617 : {'kalman.stateX': -0.4559880793094635, 'kalman.stateY': 0.9845958352088928, 'kalman.stateZ': 2.0364320278167725}
+168717 : {'kalman.stateX': -0.49251899123191833, 'kalman.stateY': 0.9893284440040588, 'kalman.stateZ': 2.0867247581481934}
+168817 : {'kalman.stateX': -0.5305089354515076, 'kalman.stateY': 0.9942751526832581, 'kalman.stateZ': 2.1367883682250977}
+168917 : {'kalman.stateX': -0.5699532628059387, 'kalman.stateY': 0.9994270205497742, 'kalman.stateZ': 2.1875200271606445}
+169017 : {'kalman.stateX': -0.6108012199401855, 'kalman.stateY': 1.004785418510437, 'kalman.stateZ': 2.2388882637023926}
+169117 : {'kalman.stateX': -0.6531537771224976, 'kalman.stateY': 1.0104281902313232, 'kalman.stateZ': 2.2915048599243164}
+169217 : {'kalman.stateX': -0.6969704031944275, 'kalman.stateY': 1.0163300037384033, 'kalman.stateZ': 2.344466209411621}
+169317 : {'kalman.stateX': -0.7422518134117126, 'kalman.stateY': 1.0225178003311157, 'kalman.stateZ': 2.3975679874420166}
+169417 : {'kalman.stateX': -0.7890579104423523, 'kalman.stateY': 1.028947114944458, 'kalman.stateZ': 2.451202154159546}
+169517 : {'kalman.stateX': -0.8374058604240417, 'kalman.stateY': 1.035611867904663, 'kalman.stateZ': 2.505033254623413}
+169617 : {'kalman.stateX': -0.8872645497322083, 'kalman.stateY': 1.042511224746704, 'kalman.stateZ': 2.559307098388672}
+169717 : {'kalman.stateX': -0.9386819005012512, 'kalman.stateY': 1.0497130155563354, 'kalman.stateZ': 2.6143274307250977}
+169817 : {'kalman.stateX': -0.9921018481254578, 'kalman.stateY': 1.0572874546051025, 'kalman.stateZ': 2.6706666946411133}
+169917 : {'kalman.stateX': -1.046529769897461, 'kalman.stateY': 1.0651335716247559, 'kalman.stateZ': 2.7276134490966797}
+170017 : {'kalman.stateX': -1.1024142503738403, 'kalman.stateY': 1.0733391046524048, 'kalman.stateZ': 2.7851881980895996}
+170117 : {'kalman.stateX': -1.1597049236297607, 'kalman.stateY': 1.0818696022033691, 'kalman.stateZ': 2.842721700668335}
+170217 : {'kalman.stateX': -1.2183371782302856, 'kalman.stateY': 1.0906665325164795, 'kalman.stateZ': 2.900235652923584}
+170317 : {'kalman.stateX': -1.2783972024917603, 'kalman.stateY': 1.0998204946517944, 'kalman.stateZ': 2.958554983139038}
+170417 : {'kalman.stateX': -1.3398469686508179, 'kalman.stateY': 1.109330654144287, 'kalman.stateZ': 3.016915798187256}
+sleep done
+[LEADER]: mission command complete
+logconf stop
+170517 : {'kalman.stateX': -1.4027081727981567, 'kalman.stateY': 1.1192219257354736, 'kalman.stateZ': 3.076357364654541}
+170617 : {'kalman.stateX': -1.4669404029846191, 'kalman.stateY': 1.1294312477111816, 'kalman.stateZ': 3.1367499828338623}
+170717 : {'kalman.stateX': -1.5326061248779297, 'kalman.stateY': 1.140017032623291, 'kalman.stateZ': 3.1976866722106934}
+[MAIN]: MISSION COMPLETE
+
+minki-cps@minkicps:~/crazyflie-swarm$ 
