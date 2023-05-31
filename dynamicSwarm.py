@@ -7,6 +7,7 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crazyflie.high_level_commander import HighLevelCommander
 from cflib.utils import uri_helper
 from cflib.utils.power_switch import PowerSwitch
+from cflib.crazyflie.syncLogger import SyncLogger
 # from cflib.positioning.position_hl_commander import PositionHlCommander
 
 from cflib.crazyflie.swarm import Swarm, CachedCfFactory
@@ -30,19 +31,15 @@ psws = [PowerSwitch(uri) for uri in drones]
 leader = [0.0, 1.0, 0.0]
 
 distance = [
+    # 01
     [+0.0, +0.0,  0.0],
+    # 02                03
     [-0.5, -0.5, -0.3], [+0.5, -0.5, -0.3],
+    # 04                05                  0A
     [-1.0, -1.0, -0.6], [+0.0, -1.0, -0.6], [+1.0, -1.0, -0.6],
-    [-1.5, -1.5, -0.9], [-0.5, -1.5, -0.9], 
-    [+0.5, -1.5, -0.9], 
-    [+1.5, -1.5, -0.9],
+    # 0B                0C                  0D                  0E
+    [-1.5, -1.5, -0.9], [-0.5, -1.5, -0.9], [+0.5, -1.5, -0.9], [+1.5, -1.5, -0.9],
 ]
-
-# factory = Factory()
-
-# scfs = [factory.construct(uri) for uri in drones]
-
-
 
 def get_next_position(leader, distance):
     """ calculates next position of follower drones """
@@ -59,7 +56,7 @@ def order_follow(timestamp, data, logconf):
     pass
 
 
-def leader_mission(scf, code, pos):
+def leader_mission(scf, code):
     takeoff_height = 1.6
     lhlc = scf.cf.high_level_commander
     # lhlc.take_off(takeoff_height, 2.0)
@@ -98,43 +95,55 @@ def leader_mission(scf, code, pos):
         time.sleep(3)
         lhlc.go_to( 0.0,  0.0, 0, 0, 2, relative=True)
         time.sleep(3)
-
     else:
-        time.sleep(5) # up-down
+        time.sleep(5) # hold
         
     print('[MISSION]: mission command complete')
     lhlc.land()
     print('[MISSION]: landing')
 
+def synchronous_mission(scf, logconf):
+    with SyncLogger(scf, logconf) as logger:
+        for log_entry in logger:
+            timestamp = log_entry[0]
+            data = log_entry[1]
+            print(timestamp,":", data['kalman.stateX'], data['kalman.stateY'], data['kalman.stateZ'])
+            order_follow(timestamp, data, logconf)
+            pass
 
+def asynchronous_mission(scf, logconf, mission_code):
+    cf = scf.cf
+    cf.log.add_config(logconf)
+    logconf.data_received_cb.add_callback(order_follow)
+    logconf.start()
+    leader_mission(scf, mission_code)
+    logconf.stop()
 
 if __name__ == '__main__':
     try:
-        # DANGER: follow calculation in every 10 ms may be too fast: 
         cflib.crtp.init_drivers()
         print("initialized")
 
         scfs = [SyncCrazyflie(uri, cf=Crazyflie(rw_cache='./cache')) for uri in drones]
         for scf in scfs:
             scf.open_link()
-            print("opened link: ", scf.cf.link_uri)
+            print("[SWARM] opened link: ", scf.cf.link_uri)
 
         hlcs = [scf.cf.high_level_commander for scf in scfs]
-        # slow down if not working well
-        mission = int(input('Enter mission code: [1] up-down, [2] forward-backward, [3] left-right, [4] square'))
+
+        mission = int(input('Enter mission code: [1] up-down, [2] forward-backward, [3] left-right, [4] square, [0] hold: \n>>> '))
         logconf = LogConfig(name='Position', period_in_ms=10)
+        # DANGER: follow calculation in every 10 ms may be too fast: 
+        # slow down if not working well
         logconf.add_variable('kalman.stateX', 'float')
         logconf.add_variable('kalman.stateY', 'float')
         logconf.add_variable('kalman.stateZ', 'float')
         leader_scf = scfs[0]
-        leader_scf.cf.log.add_config(logconf)
-        logconf.data_received_cb.add_callback(order_follow)
+
         print('[MAIN]: starting mission')
-        logconf.start()
         for drone in hlcs:
             drone.takeoff(1.0, 2.0)
-        leader_mission(leader_scf, mission, pos=leader)
-        logconf.stop()
+        asynchronous_mission(leader_scf, logconf, mission_code)
         for psw in psws:
             psw.reboot_to_fw()
         print("[MAIN]: MISSION COMPLETE\n")
