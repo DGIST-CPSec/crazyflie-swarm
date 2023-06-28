@@ -1,6 +1,7 @@
 
 import cflib.crtp
 import logging
+import time
 from cflib.crazyflie import Crazyflie
 from cflib.crazyflie.log import LogConfig
 from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
@@ -9,9 +10,9 @@ from cflib.utils.power_switch import PowerSwitch
 from cflib.crazyflie.syncLogger import SyncLogger
 
 drones = [
-    'radio://0/80/2M/E7E7E7E701',
-    'radio://0/80/2M/E7E7E7E702',
-    'radio://0/80/2M/E7E7E7E703',
+    'radio://0/80/2M/E7E7E7E70A',
+    'radio://0/80/2M/E7E7E7E70D',
+    'radio://0/80/2M/E7E7E7E70C',
 ]
 
 
@@ -123,7 +124,7 @@ def triggerRestart():
         psws[i].reboot_to_fw()
         print('[MAIN]: EMERGENCY STOP TRIGGERED\n['+str(hex(psws[i].address[4]))+']: Restarting...')
         scfs[i].close_link()
-ㄴ
+
 if __name__ == '__main__':
     try:
         cflib.crtp.init_drivers()
