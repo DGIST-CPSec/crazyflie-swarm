@@ -10,6 +10,7 @@ from cflib.utils.power_switch import PowerSwitch
 from cflib.positioning.position_hl_commander import PositionHlCommander
 
 from cflib.crazyflie.swarm import Swarm, CachedCfFactory
+
 drones = [ 
    'radio://0/80/2M/E7E7E7E7E1',
    'radio://0/80/2M/E7E7E7E7E2',
@@ -164,8 +165,12 @@ if __name__ == '__main__':
 
         while True:
             try :
-                swarm.parallel(mission, args_dict=arguments)
+                scfs = [SyncCrazyflie(uri, cf=Crazyflie(rw_cache='./cache')) for uri in drones]
+                for i in range(len(scfs)):
+                    scfs[i].open_link()
+                    # psws[i].reboot_to_fw()
+                    print("[SWARM] opened link: ", scfs[i].cf.link_uri)
+                    swarm.parallel(mission, args_dict=arguments)
             except KeyboardInterrupt:
                 logger.error('KeyboardInterrupt detected, triggering restart.')
                 triggerRestart()
-                             
