@@ -1,4 +1,4 @@
-import time, datetime, os
+import time, datetime, os, logging
 
 import cflib.crtp
 from cflib.crazyflie import Crazyflie
