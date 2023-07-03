@@ -164,7 +164,6 @@ if __name__ == '__main__':
 
         while True:
             try :
-                scfs = [SyncCrazyflie(uri, cf=Crazyflie(rw_cache='./cache')) for uri in drones]
                 swarm.parallel(mission, args_dict=arguments)
             except KeyboardInterrupt:
                 logger.error('KeyboardInterrupt detected, triggering restart.')
