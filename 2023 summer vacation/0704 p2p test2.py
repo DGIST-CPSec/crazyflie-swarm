@@ -3,8 +3,8 @@ import cflib.crtp
 from cflib.crazyflie import Crazyflie
 from cflib.utils import uri_helper
 
-leader_uri = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E705')
-follower_uri = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E701')
+leader_uri = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E701')
+follower_uri = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E705')
 
 def takeoff(cf):
     cf.commander.send_hover_setpoint(0, 0, 0, 0.5)
@@ -53,7 +53,7 @@ def main():
         takeoff(leader_cf)
         takeoff(follower_cf)
 
-        move_duration = 10
+        move_duration = 5
         move_leader(leader_cf, move_duration)
 
         follow_duration = 10
