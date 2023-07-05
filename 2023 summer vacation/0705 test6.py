@@ -28,8 +28,8 @@ def mission_phlc(leader_cf, follower_cf, code, pos, pos_follower):
     leader_phlc = PositionHlCommander(leader_cf, x=pos[0], y=pos[1], z=pos[2])
     follower_phlc = PositionHlCommander(follower_cf, x=pos_follower[0], y=pos_follower[1], z=pos_follower[2])
 
-    leader_phlc.takeoff(takeoff_height, 1.0)
-    follower_phlc.takeoff(takeoff_height, 1.0)
+    leader_phlc.take_off(takeoff_height, 1.0)
+    follower_phlc.take_off(takeoff_height, 1.0)
     time.sleep(5)
     print('[MISSION]: takeoff complete')
 
