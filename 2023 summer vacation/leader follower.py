@@ -34,14 +34,15 @@ def position_callback(timestamp, data, logconf):
 
     # 팔로워 드론의 목표 위치를 리더 드론의 현재 위치로 설정
     if follower_phlc is not None:
-        fx, fy, fz = follower_phlc.current_position()
-        dx = x - fx
-        dy = y - fy
-        dz = z - fz
+        fx, fy, fz = follower_phlc.current_position() # 팔로워 드론의 현재 위치를 가져옵니다.
+        distance = math.sqrt((x - fx) ** 2 + (y - fy) ** 2 + (z - fz) ** 2) # 팔로워 드론과 리더 드론 사이의 거리를 계산합니다.
 
-        distance = math.sqrt(dx**2 + dy**2 + dz**2)
-        if distance > 0.3:
+        if distance < 0.3: # 드론들 사이의 거리가 0.3미터 미만일 경우
+            # 팔로워 드론이 리더 드론에서 멀어지도록 목표 위치를 설정합니다.
+            follower_phlc.go_to(fx - 0.1 if fx > x else fx + 0.1, fy - 0.1 if fy > y else fy + 0.1, fz)
+        else:
             follower_phlc.go_to(x, y, z)
+
 
 logconf = LogConfig(name='Position', period_in_ms=100)
 logconf.add_variable('stateEstimate.x', 'float')
