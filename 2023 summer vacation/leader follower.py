@@ -16,6 +16,8 @@ follower_uri = 'radio://0/80/2M/E7E7E7E702'
 
 follower_phlc = None
 
+follower_x, follower_y, follower_z = 0, 0, 0  # Initialize follower drone's position
+
 def initialize(scf):
     scf.cf.param.request_update_of_all_params()
     scf.cf.param.set_value('kalman.resetEstimation', '1')
@@ -33,15 +35,13 @@ def position_callback(timestamp, data, logconf):
     print('Position: ({}, {}, {})'.format(x, y, z))
 
     # 팔로워 드론의 목표 위치를 리더 드론의 현재 위치로 설정
-    if follower_phlc is not None:
-        fx, fy, fz = follower_phlc.current_position() # 팔로워 드론의 현재 위치를 가져옵니다.
-        distance = math.sqrt((x - fx) ** 2 + (y - fy) ** 2 + (z - fz) ** 2) # 팔로워 드론과 리더 드론 사이의 거리를 계산합니다.
+    distance = math.sqrt((x - follower_x) ** 2 + (y - follower_y) ** 2 + (z - follower_z) ** 2) # 팔로워 드론과 리더 드론 사이의 거리를 계산합니다.
 
-        if distance < 0.3: # 드론들 사이의 거리가 0.3미터 미만일 경우
-            # 팔로워 드론이 리더 드론에서 멀어지도록 목표 위치를 설정합니다.
-            follower_phlc.go_to(fx - 0.1 if fx > x else fx + 0.1, fy - 0.1 if fy > y else fy + 0.1, fz)
-        else:
-            follower_phlc.go_to(x, y, z)
+    if distance < 0.3: # 드론들 사이의 거리가 0.3미터 미만일 경우
+        # 팔로워 드론이 리더 드론에서 멀어지도록 목표 위치를 설정합니다.
+        follower_phlc.go_to(follower_x - 0.1 if follower_x > x else follower_x + 0.1, follower_y - 0.1 if follower_y > y else follower_y + 0.1, follower_z)
+    else:
+        follower_phlc.go_to(x, y, z)
 
 
 def follower_position_callback(timestamp, data, logconf):
@@ -60,6 +60,9 @@ follower_logconf = LogConfig(name='Follower Position', period_in_ms=100)
 follower_logconf.add_variable('stateEstimate.x', 'float')
 follower_logconf.add_variable('stateEstimate.y', 'float')
 follower_logconf.add_variable('stateEstimate.z', 'float')
+
+# Other parts of the code remain the same...
+
 
 
 def mission_phlc(leader_cf, follower_cf, code, leader_pos, follower_pos):
