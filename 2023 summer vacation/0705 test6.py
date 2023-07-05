@@ -6,6 +6,7 @@ import cflib.crtp
 from cflib.crazyflie import Crazyflie
 from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.positioning.motion_commander import MotionCommander
+from cflib.positioning.position_hl_commander import PositionHlCommander
 
 # 리더와 팔로워의 URI
 leader_uri = 'radio://0/80/2M/E7E7E7E701'
@@ -24,11 +25,11 @@ def initialize(scf):
 def mission_phlc(leader_cf, follower_cf, code, pos, pos_follower):
     takeoff_height = 1.0
 
-    leader_phlc = MotionCommander(leader_cf, x=pos[0], y=pos[1], z=pos[2])
-    follower_phlc = MotionCommander(follower_cf, x=pos_follower[0], y=pos_follower[1], z=pos_follower[2])
+    leader_phlc = PositionHlCommander(leader_cf, x=pos[0], y=pos[1], z=pos[2])
+    follower_phlc = PositionHlCommander(follower_cf, x=pos_follower[0], y=pos_follower[1], z=pos_follower[2])
 
-    leader_phlc.take_off(takeoff_height, 1.0)
-    follower_phlc.take_off(takeoff_height, 1.0)
+    leader_phlc.takeoff(takeoff_height, 1.0)
+    follower_phlc.takeoff(takeoff_height, 1.0)
     time.sleep(5)
     print('[MISSION]: takeoff complete')
 
