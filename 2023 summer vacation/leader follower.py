@@ -44,10 +44,23 @@ def position_callback(timestamp, data, logconf):
             follower_phlc.go_to(x, y, z)
 
 
+def follower_position_callback(timestamp, data, logconf):
+    global follower_x, follower_y, follower_z
+    follower_x = data['stateEstimate.x']
+    follower_y = data['stateEstimate.y']
+    follower_z = data['stateEstimate.z']
+
 logconf = LogConfig(name='Position', period_in_ms=100)
 logconf.add_variable('stateEstimate.x', 'float')
 logconf.add_variable('stateEstimate.y', 'float')
 logconf.add_variable('stateEstimate.z', 'float')
+
+# Create separate LogConfig for follower drone
+follower_logconf = LogConfig(name='Follower Position', period_in_ms=100)
+follower_logconf.add_variable('stateEstimate.x', 'float')
+follower_logconf.add_variable('stateEstimate.y', 'float')
+follower_logconf.add_variable('stateEstimate.z', 'float')
+
 
 def mission_phlc(leader_cf, follower_cf, code, leader_pos, follower_pos):
     global follower_phlc
@@ -125,7 +138,11 @@ def main():
             leader_cf.cf.log.add_config(logconf)
             logconf.data_received_cb.add_callback(position_callback)
             logconf.start()
-
+            
+            follower_cf.cf.log.add_config(follower_logconf)
+            follower_logconf.data_received_cb.add_callback(follower_position_callback)
+            follower_logconf.start()
+            
             mission_phlc(leader_cf, follower_cf, missNo, leader_init_pos, follower_init_pos)
 
             print('[MAIN]: mission complete. Rebooting...')
