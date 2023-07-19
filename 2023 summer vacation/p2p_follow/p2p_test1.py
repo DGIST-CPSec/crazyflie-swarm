@@ -11,7 +11,7 @@ from cflib.drivers import lighthouse
 uri_cf1 = 'radio://0/80/2M/E7E7E7E70A?rate_limit=100'
 
 # 두 번째 드론의 URI
-uri_cf2 = 'radio://0/80/2M/E7E7E7E701?rate_limit=100'
+uri_cf2 = 'radio://0/80/2M/E7E7E7E701'
 
 # Crazyflie 라이브러리 초기화
 cflib.crtp.init_drivers(enable_debug_driver=False)
