@@ -1,4 +1,4 @@
-import time, datetime, os, random, logging
+import time, datetime, os, random, logging, math
 
 import cflib.crtp
 from cflib.crazyflie import Crazyflie
@@ -82,19 +82,44 @@ def coordinate_generator():
         pos.append(random_position())
     return pos
 
-def mission(scf: SyncCrazyflie, posNo, code):
+def calculate_distance(p1, p2):
+    diff = [0, 0, 0]
+    diff[0] = p1[0] - p2[0]
+    diff[1] = p1[1] - p2[1]
+    diff[2] = p1[2] - p2[2]
+    return math.sqrt((diff[0] * diff[0]) + (diff[1] * diff[1]) + (diff[2] * diff[2]))
+
+def find_closest_target(start_position, targets_position):
+    min_distance = None
+    closest_index = 0
+    for index, target in enumerate(targets_position):
+        dist = calculate_distance(start_position, target)
+        if min_distance is None or dist < min_distance:
+            min_distance = dist
+            closest_index = index
+    
+    return targets_position[closest_index]
+
+def mission(scf: SyncCrazyflie, posNo):
     takeoff_height = 1.0
+    coordinate = coordinate_generator()  # Generate individual coordinate list for each drone
     phlc = PositionHlCommander(scf, 
-                                x = coordinate[posNo][0], 
-                                y = coordinate[posNo][1], 
-                                z = 0
-                                )
+                               x=coordinate[posNo][0], 
+                               y=coordinate[posNo][1], 
+                               z=0)
     phlc.take_off(takeoff_height, 1.0)
     time.sleep(5)
     print(f'[{scf.cf.link_uri}]: takeoff complete')
     phlc.set_default_velocity(0.5)
     phlc.set_landing_height(0.0)
-    phlc.go_to(coordinate[posNo][0], coordinate[posNo][1], coordinate[posNo][2])    
+    for i in range(5):
+        coordinate = coordinate_generator()  # Generate new coordinates for each waypoint
+        phlc.go_to(coordinate[posNo][0], coordinate[posNo][1], coordinate[posNo][2])
+        time.sleep(5)
+    phlc.land()
+
+
+
 
 if __name__ == '__main__':
     now = datetime.datetime.now()
@@ -114,7 +139,6 @@ if __name__ == '__main__':
         swarm.parallel_safe(simple_log_async)
 
         try :
-            coordinate = coordinate_generator()
             swarm.parallel(mission, args_dict=arguments)
         except KeyboardInterrupt:
             logger.error('KeyboardInterrupt detected, triggering restart.')
