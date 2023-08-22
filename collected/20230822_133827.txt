@@ -1,0 +1,20 @@
+HEALTH: Propeller test on M3 [FAIL]. low: 0.0, high: 2.50, measured: 20.22
+ESTKALMAN: WARNING: Kalman prediction rate off (21)
+ESTKALMAN: State out of bounds, resetting
+SUP: Can not fly
+SUP: Ready to fly
+SUP: Can not fly
+SUP: Ready to fly
+SUP: Can not fly
+SUP: Ready to fly
+ESTKALMAN: State out of bounds, resetting
+SUP: Can not fly
+SUP: Ready to fly
+SUP: Can not fly
+SUP: Ready to fly
+SUP: Can not fly
+SUP: Ready to fly
+SUP: Can not fly
+SUP: Ready to fly
+ESTKALMAN: State out of bounds, resetting
+SUP: Can not fly
