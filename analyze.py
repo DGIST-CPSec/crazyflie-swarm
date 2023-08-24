@@ -13,7 +13,7 @@ try:
     fName = sys.argv[1]
 except:
     logFiles = os.listdir('./log')
-    logFiles.sort(reverse=True)
+    logFiles.sort()
     for i, logName in enumerate(logFiles):
         print(i,":", logName)
     fName = logFiles[int(input('log file number?: '))]
