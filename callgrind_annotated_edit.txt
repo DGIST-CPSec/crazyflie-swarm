@@ -1,0 +1,873 @@
+--------------------------------------------------------------------------------
+Profile data file 'callgrind.out.88133' (creator: callgrind-3.15.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 2543630473
+Trigger: Program termination
+Profiled target:  /home/hwcpsec/ardupilot/build/sitl/bin/arducopter -S --model + --speedup 1 --slave 0 --defaults ../../../ardupilot/Tools/autotest/default_params/copter.parm --sim-address=127.0.0.1 -I0 (PID 88133, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                     
+--------------------------------------------------------------------------------
+7,452,985,852 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                      file:function
+--------------------------------------------------------------------------------
+
+7,377,580,279 (98.99%)  *  ???:0x0000000000001100 [/usr/lib/x86_64-linux-gnu/ld-2.31.so]
+7,374,851,149 (98.95%)  >   ???:_start (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,640,431 ( 0.04%)  >   /build/glibc-SzIz7B/glibc-2.31/elf/rtld.c:_dl_start (1x) [/usr/lib/x86_64-linux-gnu/ld-2.31.so]
+       88,680 ( 0.00%)  >   /build/glibc-SzIz7B/glibc-2.31/elf/dl-init.c:_dl_init (1x)
+
+7,374,851,149 (98.95%)  < ???:0x0000000000001100 (1x) [/usr/lib/x86_64-linux-gnu/ld-2.31.so]
+7,374,851,149 (98.95%)  *  ???:_start [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+7,374,851,137 (98.95%)  >   /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:(below main) (1x)
+
+7,374,851,137 (98.95%)  < ???:_start (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+7,374,851,137 (98.95%)  *  /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c:(below main)
+
+7,374,258,523 (98.94%)  *  ???:HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+7,178,977,074 (96.32%)  >   ???:AP_Vehicle::loop() (35,794x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  103,313,809 ( 1.39%)  >   ???:AP_Vehicle::setup() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   86,772,387 ( 1.16%)  >   ???:HALSITL::Scheduler::_run_io_procs() (35,793x)
+    3,812,237 ( 0.05%)  >   ???:fill_stack_nan() (3,581x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      715,880 ( 0.01%)  >   ???:AP_HAL::millis() (35,794x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       76,087 ( 0.00%)  >   ???:HALSITL::SITL_State::init(int, char* const*) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        5,592 ( 0.00%)  >   ???:HALSITL::UARTDriver::begin(unsigned int) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        4,024 ( 0.00%)  >   ???:HALSITL::RCInput::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,176 ( 0.00%)  >   ???:0x0000000000157550 (2x) [???]
+           99 ( 0.00%)  >   ???:HAL_SITL::setup_signal_handlers() const (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           44 ( 0.00%)  >   ???:HALSITL::Scheduler::set_system_initialized() (1x)
+           20 ( 0.00%)  >   ???:AP_HAL::HAL::serial(unsigned char) const (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           12 ( 0.00%)  >   ???:HALSITL::Scheduler::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            2 ( 0.00%)  >   ???:HALSITL::RCOutput::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            2 ( 0.00%)  >   ???:HALSITL::AnalogIn::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+7,178,977,074 (96.32%)  < ???:HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const (35,794x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+7,178,977,074 (96.32%)  *  ???:AP_Vehicle::loop() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+7,177,724,237 (96.31%)  >   ???:AP_Scheduler::loop() (35,794x)
+      107,379 ( 0.00%)  >   ???:AP::internalerror() (35,793x)
+           61 ( 0.00%)  >   ???:AP_BoardConfig::init_safety() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+7,177,724,237 (96.31%)  < ???:AP_Vehicle::loop() (35,794x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+7,177,724,237 (96.31%)  *  ???:AP_Scheduler::loop()
+
+3,690,853,637 (49.52%)  *  ???:AP_Scheduler::run(unsigned int) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,972,469,374 (26.47%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::read_AHRS>(void*) (35,793x)
+  562,621,950 ( 7.55%)  >   ???:fill_nanf_stack() (1,022,949x)
+  245,872,869 ( 3.30%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_flight_mode>(void*) (35,793x)
+  189,041,589 ( 2.54%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::motors_output>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  129,172,632 ( 1.73%)  >   ???:void Functor<void>::method_wrapper<GCS, &GCS::update_send>(void*) (35,792x)
+   50,112,237 ( 0.67%)  >   ???:void Functor<void>::method_wrapper<AP_InertialSensor, &AP_InertialSensor::update>(void*) (35,793x)
+   49,959,922 ( 0.67%)  >   ???:void Functor<void>::method_wrapper<GCS, &GCS::update_receive>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   42,415,374 ( 0.57%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::read_inertia>(void*) (35,793x)
+   41,881,875 ( 0.56%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::run_rate_controller>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   36,857,038 ( 0.49%)  >   ???:void Functor<void>::method_wrapper<AP_GPS, &AP_GPS::update>(void*) (4,474x)
+   34,568,374 ( 0.46%)  >   ???:void Functor<void>::method_wrapper<AP_Logger, &AP_Logger::periodic_tasks>(void*) (35,792x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   25,889,057 ( 0.35%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::ten_hz_logging_loop>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   23,954,741 ( 0.32%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::rc_loop>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,504,177 ( 0.26%)  >   ???:void Functor<void>::method_wrapper<AP_ESC_Telem, &AP_ESC_Telem::update>(void*) (8,948x)
+   15,881,130 ( 0.21%)  >   ???:AP_HAL::micros() (1,058,742x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   13,548,524 ( 0.18%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::check_ekf_reset>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   13,436,752 ( 0.18%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_land_and_crash_detectors>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    7,904,477 ( 0.11%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::terrain_update>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,431,562 ( 0.09%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::loop_rate_logging>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,114,745 ( 0.07%)  >   ???:AP::PerfInfo::update_task_info(unsigned char, unsigned short, bool) (1,022,949x)
+    4,128,716 ( 0.06%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::update_dynamic_notch_at_specified_rate>(void*) (35,792x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,805,224 ( 0.05%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::throttle_loop>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,388,604 ( 0.05%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_altitude>(void*) (894x)
+    3,078,198 ( 0.04%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_rangefinder_terrain_offset>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,051,119 ( 0.04%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_batt_compass>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,467,755 ( 0.03%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::twentyfive_hz_logging>(void*) (2,237x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,368,865 ( 0.03%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_home_from_EKF>(void*) (35,793x)
+    2,287,026 ( 0.03%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::Log_Video_Stabilisation>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,360,134 ( 0.02%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_precland>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,335,698 ( 0.02%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::update_arming>(void*) (89x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,268,892 ( 0.02%)  >   ???:void Functor<void>::method_wrapper<AP_Notify, &AP_Notify::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,117,560 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<AP_Proximity, &AP_Proximity::update>(void*) (17,896x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      857,927 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::read_rangefinder>(void*) (1,789x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      715,840 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<AP_GyroFFT, &AP_GyroFFT::update>(void*) (35,792x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      644,274 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<AP_GyroFFT, &AP_GyroFFT::sample_gyros>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      566,029 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<RC_Channels, &RC_Channels::read_aux_all>(void*) (894x)
+      494,031 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::one_hz_loop>(void*) (89x)
+      487,396 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<Compass, &Compass::cal_update>(void*) (8,948x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      465,309 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<AP_Mount, &AP_Mount::update_fast>(void*) (35,793x)
+      434,543 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::ekf_check>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      393,712 ( 0.01%)  >   ???:void Functor<void>::method_wrapper<AP_OpticalFlow, &AP_OpticalFlow::update>(void*) (17,896x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      357,930 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Beacon, &AP_Beacon::update>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      322,128 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_InertialSensor, &AP_InertialSensor::periodic>(void*) (35,792x)
+      319,686 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::lost_vehicle_check>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      267,171 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::update_throttle_hover>(void*) (8,948x)
+      250,551 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::run_custom_controller>(void*) (35,793x)
+      230,946 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::check_vibration>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      158,852 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<ModeSmartRTL, &ModeSmartRTL::save_position>(void*) (269x)
+      156,590 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Baro, &AP_Baro::accumulate>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      116,324 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_NMEA_Output, &AP_NMEA_Output::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       98,428 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Tramp, &AP_Tramp::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       71,584 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::run_nav_updates>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       67,110 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::takeoff_check>(void*) (4,474x)
+       60,742 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::three_hz_loop>(void*) (269x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       58,162 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Camera, &AP_Camera::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       58,162 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Mount, &AP_Mount::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       56,262 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::gpsglitch_check>(void*) (894x)
+       55,205 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::auto_disarm_check>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       53,688 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::standby_update>(void*) (8,948x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       44,740 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_EFI, &AP_EFI::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       40,230 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::avoidance_adsb_update>(void*) (894x)
+       33,522 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::accel_cal_update>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       32,703 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AC_Fence, &AC_Fence::update>(void*) (894x)
+       29,502 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::landinggear_update>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       26,844 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Winch, &AP_Winch::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       26,844 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_RunCam, &AP_RunCam::update>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       26,844 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_ServoRelayEvents, &AP_ServoRelayEvents::update_events>(void*) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       26,067 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::publish_osd_info>(void*) (89x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       25,053 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_RPM, &AP_RPM::update>(void*) (3,579x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       24,673 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Stats, &AP_Stats::update>(void*) (89x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       24,138 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Airspeed, &AP_Airspeed::update>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       18,774 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::arm_motors_check>(void*) (894x)
+       17,880 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_OpenDroneID, &AP_OpenDroneID::update>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       12,516 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_TempCalibration, &AP_TempCalibration::update>(void*) (894x)
+       12,462 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::check_motor_noise>(void*) (447x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       10,728 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Button, &AP_Button::update>(void*) (447x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        6,258 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<Copter, &Copter::auto_trim>(void*) (894x)
+        6,258 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Generator, &AP_Generator::update>(void*) (894x)
+        5,918 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AC_Sprayer, &AC_Sprayer::update>(void*) (269x)
+        5,364 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Gripper, &AP_Gripper::update>(void*) (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        4,880 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::send_watchdog_reset_statustext>(void*) (8x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        4,306 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Scheduler, &AP_Scheduler::update_logging>(void*) (8x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        3,129 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_TemperatureSensor, &AP_TemperatureSensor::update>(void*) (447x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        2,848 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_VideoTX, &AP_VideoTX::update>(void*) (178x)
+        2,047 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_GyroFFT, &AP_GyroFFT::update_parameters>(void*) (89x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,788 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_AIS, &AP_AIS::update>(void*) (447x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          267 ( 0.00%)  >   ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::one_Hz_update>(void*) (89x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+3,528,446,672 (47.34%)  < ???:HALSITL::SITL_State::wait_clock(unsigned long) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+3,528,446,672 (47.34%)  *  ???:HALSITL::SITL_State::_fdm_input_step() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,871,601,019 (25.11%)  >   ???:HALSITL::SITL_State::_fdm_input_local() (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,273,821,045 (17.09%)  >   ???:HALSITL::Scheduler::_run_timer_procs() (110,153x)
+  282,477,931 ( 3.79%)  >   ???:HALSITL::Scheduler::_run_io_procs() (110,153x)
+   64,147,131 ( 0.86%)  >   ???:HALSITL::SITL_State::_update_airspeed(float) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   28,335,503 ( 0.38%)  >   ???:HALSITL::SITL_State::_update_rangefinder() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,294,800 ( 0.03%)  >   ???:AP_HAL::millis() (114,740x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      881,224 ( 0.01%)  >   ???:0x0000000000157720 (110,153x) [???]
+      771,071 ( 0.01%)  >   ???:HALSITL::Scheduler::sitl_end_atomic() (110,153x)
+
+1,972,469,374 (26.47%)  < ???:AP_Scheduler::run(unsigned int) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,972,469,374 (26.47%)  *  ???:void Functor<void>::method_wrapper<Copter, &Copter::read_AHRS>(void*)
+
+1,871,601,019 (25.11%)  < ???:HALSITL::SITL_State::_fdm_input_step() (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,871,601,019 (25.11%)  *  ???:HALSITL::SITL_State::_fdm_input_local() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,169,415,644 (15.69%)  >   ???:SITL::Aircraft::update_model(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  386,787,350 ( 5.19%)  >   ???:SITL::Aircraft::fill_fdm(SITL::sitl_fdm&) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   99,852,648 ( 1.34%)  >   ???:HALSITL::SITL_State::_output_to_flightgear() (110,153x)
+   49,083,724 ( 0.66%)  >   ???:HALSITL::SITL_State::_simulator_servos(sitl_input&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   48,355,765 ( 0.65%)  >   ???:AP_Terrain::height_amsl(Location const&, float&, bool) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   28,659,556 ( 0.38%)  >   ???:HALSITL::Scheduler::stop_clock(unsigned long) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   26,213,389 ( 0.35%)  >   ???:SITL::GPS::update() (220,306x)
+   20,267,304 ( 0.27%)  >   ???:HALSITL::SITL_State::_check_rc_input() (110,154x)
+   15,751,879 ( 0.21%)  >   ???:SITL::Aircraft::get_position_relhome() const (110,153x)
+    2,753,850 ( 0.04%)  >   ???:SITL::JSON_Master::receive(sitl_input&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      771,071 ( 0.01%)  >   ???:std::enable_if<std::is_floating_point<std::common_type<float, float>::type>::value, bool>::type is_equal<float, float>(float, float) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      440,612 ( 0.01%)  >   ???:Location::Location() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      440,612 ( 0.01%)  >   ???:SITL::JSON_Master::send(SITL::sitl_fdm const&, Vector3<double> const&) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+1,797,898,644 (24.12%)  < ???:AP_AHRS::update(bool) (35,797x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,797,898,644 (24.12%)  *  ???:AP_AHRS::update_EKF3()
+
+1,742,136,037 (23.38%)  *  ???:NavEKF3::UpdateFilter() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,573,339,203 (21.11%)  >   ???:NavEKF3_core::UpdateFilter(bool) (69,990x)
+  152,613,217 ( 2.05%)  >   ???:AP_DAL::start_frame(AP_DAL::FrameType) (34,995x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,129,410 ( 0.06%)  >   ???:AP_DAL::ekf_low_time_remaining(AP_DAL::EKFType, unsigned char) (69,990x)
+    2,402,686 ( 0.03%)  >   ???:NavEKF3::coreBetterScore(unsigned char, unsigned char) const (16,802x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,991,990 ( 0.03%)  >   ???:NavEKF3::updateCoreErrorScores() (16,802x)
+    1,399,800 ( 0.02%)  >   ???:AP::dal() (174,975x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      834,164 ( 0.01%)  >   ???:NavEKF3::updateCoreRelativeErrors() (16,802x)
+      594,915 ( 0.01%)  >   ???:AP_NavEKF_Source::align_inactive_sources() (34,995x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      498,304 ( 0.01%)  >   ???:NavEKF3_core::healthy() const (4,399x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      209,970 ( 0.00%)  >   ???:NavEKF3_core::getFramesSincePredict() const (69,990x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+1,573,339,203 (21.11%)  < ???:NavEKF3::UpdateFilter() (69,990x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,573,339,203 (21.11%)  *  ???:NavEKF3_core::UpdateFilter(bool)
+
+1,273,821,045 (17.09%)  < ???:HALSITL::SITL_State::_fdm_input_step() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,273,821,045 (17.09%)  *  ???:HALSITL::Scheduler::_run_timer_procs()
+
+1,193,365,937 (16.01%)  *  ???:void Functor<void>::method_wrapper<AP_InertialSensor_SITL, &AP_InertialSensor_SITL::timer_update>(void*) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  769,023,880 (10.32%)  >   ???:AP_InertialSensor_SITL::generate_gyro() (158,473x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  408,718,186 ( 5.48%)  >   ???:AP_InertialSensor_SITL::generate_accel() (162,032x)
+    3,241,950 ( 0.04%)  >   ???:AP_HAL::micros64() (216,130x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+1,169,415,644 (15.69%)  < ???:HALSITL::SITL_State::_fdm_input_local() (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,169,415,644 (15.69%)  *  ???:SITL::Aircraft::update_model(sitl_input const&) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,166,650,866 (15.65%)  >   ???:SITL::MultiCopter::update(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       10,696 ( 0.00%)  >   ???:0x0000000000156d70 (1x) [???]
+          172 ( 0.00%)  >   ???:Matrix3<float>::from_euler(float, float, float) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            4 ( 0.00%)  >   ???:Location::Location() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+1,166,650,866 (15.65%)  < ???:SITL::Aircraft::update_model(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+1,166,650,866 (15.65%)  *  ???:SITL::MultiCopter::update(sitl_input const&) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  480,596,770 ( 6.45%)  >   ???:SITL::Aircraft::update_dynamics(Vector3<float> const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  327,268,505 ( 4.39%)  >   ???:SITL::Frame::calculate_forces(SITL::Aircraft const&, sitl_input const&, Vector3<float>&, Vector3<float>&, float*, bool) (110,154x)
+  186,021,608 ( 2.50%)  >   ???:SITL::Aircraft::update_external_payload(sitl_input const&) (110,154x)
+   66,862,871 ( 0.90%)  >   ???:SITL::Aircraft::update_mag_field_bf() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   36,653,353 ( 0.49%)  >   ???:SITL::Aircraft::update_wind(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   18,849,165 ( 0.25%)  >   ???:SITL::Aircraft::update_position() (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   15,810,204 ( 0.21%)  >   ???:SITL::Aircraft::time_advance() (110,154x)
+   11,566,217 ( 0.16%)  >   ???:SITL::Frame::current_and_voltage(float&, float&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,609,240 ( 0.09%)  >   ???:SITL::Battery::set_current(float) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,736,622 ( 0.06%)  >   ???:SITL::Aircraft::add_twist_forces(Vector3<float>&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,075,698 ( 0.05%)  >   ???:SITL::Aircraft::add_shove_forces(Vector3<float>&, Vector3<float>&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  979,878,500 (13.15%)  < ???:0x0000000000157270 (703,636x) [???]
+      175,081 ( 0.00%)  < ???:0x00000000001578d0 (921x) [???]
+       19,396 ( 0.00%)  < ???:0x0000000004c0a4d0 (1,557x) [???]
+  980,072,977 (13.15%)  *  /build/glibc-SzIz7B/glibc-2.31/string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__memcpy_avx_unaligned_erms
+
+  978,044,361 (13.12%)  *  ???:NavEKF_core_common::fill_scratch_variables() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  976,994,511 (13.11%)  >   ???:fill_nanf(double*, unsigned short) (279,960x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  976,994,511 (13.11%)  < ???:NavEKF_core_common::fill_scratch_variables() (279,960x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  976,994,511 (13.11%)  *  ???:fill_nanf(double*, unsigned short) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  974,190,810 (13.07%)  >   ???:0x0000000000157270 (279,960x) [???]
+
+  974,190,810 (13.07%)  < ???:fill_nanf(double*, unsigned short) (279,960x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,612,603 ( 0.02%)  < ???:strncpy_noterm(char*, char const*, unsigned long) (104,138x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      422,984 ( 0.01%)  < ???:HALSITL::Storage::read_block(void*, unsigned short, unsigned long) (24,881x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        4,605 ( 0.00%)  < ???:GCS_MAVLINK::find_next_bucket_to_send(unsigned short) (307x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        3,600 ( 0.00%)  < ???:AP_Filesystem_Sys::read(int, void*, unsigned int) (257x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          390 ( 0.00%)  < ???:ByteBuffer::peekbytes(unsigned char*, unsigned int) (26x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           15 ( 0.00%)  < ???:GCS_MAVLINK::set_ap_message_interval(ap_message, unsigned short) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  976,235,007 (13.10%)  *  ???:0x0000000000157270 [???]
+  979,878,500 (13.15%)  >   /build/glibc-SzIz7B/glibc-2.31/string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__memcpy_avx_unaligned_erms (703,636x)
+
+  769,023,880 (10.32%)  < ???:void Functor<void>::method_wrapper<AP_InertialSensor_SITL, &AP_InertialSensor_SITL::timer_update>(void*) (158,473x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  769,023,880 (10.32%)  *  ???:AP_InertialSensor_SITL::generate_gyro() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  368,453,772 ( 4.94%)  >   ???:rand_float() (4,731,594x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  101,742,706 ( 1.37%)  >   ???:AP_InertialSensor_Backend::_notify_new_gyro_raw_sample(unsigned char, Vector3<float> const&, unsigned long) (158,473x)
+   31,543,960 ( 0.42%)  >   ???:AP_HAL::millis() (1,577,198x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   27,600,965 ( 0.37%)  >   ???:AP_InertialSensor_TCal::sitl_apply_gyro(float, Vector3<float>&) const (788,599x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   26,023,767 ( 0.35%)  >   ???:0x0000000000157900 (788,599x) [???]
+   18,926,376 ( 0.25%)  >   ???:Vector3<float>::operator+=(Vector3<float> const&) (1,577,198x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   11,861,399 ( 0.16%)  >   ???:AP_InertialSensor_Backend::_rotate_and_correct_gyro(unsigned char, Vector3<float>&) (158,473x)
+    8,674,589 ( 0.12%)  >   ???:AP_InertialSensor_Backend::_notify_new_gyro_sensor_rate_sample(unsigned char, Vector3<float> const&) (788,599x)
+    5,705,028 ( 0.08%)  >   ???:0x0000000000157650 (158,473x) [???]
+    4,754,190 ( 0.06%)  >   ???:AP_HAL::micros64() (316,946x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,901,676 ( 0.03%)  >   ???:Vector3<float>::operator/=(float) (158,473x)
+
+  562,621,950 ( 7.55%)  < ???:AP_Scheduler::run(unsigned int) (1,022,949x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  562,621,950 ( 7.55%)  *  ???:fill_nanf_stack()
+
+  480,596,770 ( 6.45%)  < ???:SITL::MultiCopter::update(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  480,596,770 ( 6.45%)  *  ???:SITL::Aircraft::update_dynamics(Vector3<float> const&) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  330,481,867 ( 4.43%)  >   ???:AP_Terrain::height_amsl(Location const&, float&, bool) (782,780x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   27,538,500 ( 0.37%)  >   ???:Matrix3<float>::normalize() (110,154x)
+   17,850,064 ( 0.24%)  >   ???:Matrix3<float>::to_euler(float*, float*, float*) const (66,844x)
+   14,099,712 ( 0.19%)  >   ???:Matrix3<float>::rotate(Vector3<float> const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   10,427,664 ( 0.14%)  >   ???:Matrix3<float>::from_euler(float, float, float) (66,844x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    9,583,398 ( 0.13%)  >   ???:Matrix3<float>::operator*(Vector3<float> const&) const (330,462x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,480,728 ( 0.07%)  >   ???:float constrain_value_line<float>(float, float, float, unsigned int) (550,770x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,846,776 ( 0.07%)  >   ???:Vector3<float>::operator*(float) const (440,616x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,626,468 ( 0.06%)  >   ???:Matrix3<float>::transposed() const (220,308x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,965,544 ( 0.05%)  >   ???:Vector3<float>::operator+=(Vector3<float> const&) (330,462x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  >   ???:Vector3<float>::length() const (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,671,100 ( 0.02%)  >   ???:SITL::ShipSim::get_ground_speed_adjustment(Location const&, float&) (66,844x)
+    1,321,848 ( 0.02%)  >   ???:Vector3<double>::operator+=(Vector3<double> const&) (110,154x)
+    1,211,694 ( 0.02%)  >   ???:Vector3<float>::operator+(Vector3<float> const&) const (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,211,694 ( 0.02%)  >   ???:Vector3<float>::operator-(Vector3<float> const&) const (110,154x)
+    1,191,918 ( 0.02%)  >   ???:AP::terrain() (397,306x)
+    1,101,540 ( 0.01%)  >   ???:Vector3<float>::operator*(Vector3<float> const&) const (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        2,555 ( 0.00%)  >   ???:GCS::send_text(MAV_SEVERITY, char const*, ...) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           40 ( 0.00%)  >   ???:AP_HAL::millis() (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            3 ( 0.00%)  >   ???:gcs() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  368,453,772 ( 4.94%)  < ???:AP_InertialSensor_SITL::generate_gyro() (4,731,594x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   42,888,292 ( 0.58%)  < ???:SITL::Aircraft::rangefinder_range() const (550,768x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   17,155,290 ( 0.23%)  < ???:HALSITL::SITL_State::_update_airspeed(float) (220,308x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,428,938 ( 0.02%)  < ???:AP_Baro_SITL::_timer() (18,350x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      142,914 ( 0.00%)  < ???:SITL::Airspeed_DLVR::update(SITL::Aircraft const&) (1,835x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  430,069,206 ( 5.77%)  *  ???:rand_float() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  422,075,196 ( 5.66%)  >   ???:0x0000000000157070 (6,821,876x) [???]
+
+  422,075,196 ( 5.66%)  < ???:rand_float() (6,821,876x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,702,456 ( 0.02%)  < ???:rand_vec3f() (27,516x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  423,777,652 ( 5.69%)  *  ???:0x0000000000157070 [???]
+  410,078,868 ( 5.50%)  >   /build/glibc-SzIz7B/glibc-2.31/stdlib/random.c:random (6,849,392x)
+
+  410,078,868 ( 5.50%)  < ???:0x0000000000157070 (6,849,392x) [???]
+  410,078,868 ( 5.50%)  *  /build/glibc-SzIz7B/glibc-2.31/stdlib/random.c:random
+
+  408,718,186 ( 5.48%)  < ???:void Functor<void>::method_wrapper<AP_InertialSensor_SITL, &AP_InertialSensor_SITL::timer_update>(void*) (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  408,718,186 ( 5.48%)  *  ???:AP_InertialSensor_SITL::generate_accel()
+
+  282,477,931 ( 3.79%)  < ???:HALSITL::SITL_State::_fdm_input_step() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   86,772,387 ( 1.16%)  < ???:HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   27,880,012 ( 0.37%)  < ???:HALSITL::Scheduler::stop_clock(unsigned long) (8,473x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  397,130,330 ( 5.33%)  *  ???:HALSITL::Scheduler::_run_io_procs()
+
+  386,787,350 ( 5.19%)  < ???:HALSITL::SITL_State::_fdm_input_local() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  386,787,350 ( 5.19%)  *  ???:SITL::Aircraft::fill_fdm(SITL::sitl_fdm&) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  220,526,312 ( 2.96%)  >   ???:SITL::Aircraft::smooth_sensors() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   57,826,393 ( 0.78%)  >   ???:AP_Logger::WriteStreaming(char const*, char const*, char const*, ...) (35,793x)
+   31,096,259 ( 0.42%)  >   ???:Matrix3<float>::to_euler(float*, float*, float*) const (110,153x)
+   24,045,492 ( 0.32%)  >   ???:SITL::Aircraft::rangefinder_range() const (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   10,538,167 ( 0.14%)  >   ???:0x0000000000157680 (110,153x) [???]
+    3,855,355 ( 0.05%)  >   ???:QuaternionT<float>::from_rotation_matrix(Matrix3<float> const&) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,829,851 ( 0.05%)  >   ???:Location::get_distance_NE_double(Location const&) const (35,793x)
+    1,542,149 ( 0.02%)  >   ???:std::enable_if<std::is_floating_point<std::common_type<float, float>::type>::value, bool>::type is_equal<float, float>(float, float) (220,307x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      536,895 ( 0.01%)  >   ???:AP_HAL::micros64() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      330,459 ( 0.00%)  >   ???:AP::scheduler() (110,153x)
+      322,137 ( 0.00%)  >   ???:Vector2<double>::operator+=(Vector2<double> const&) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      107,379 ( 0.00%)  >   ???:AP::logger() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           23 ( 0.00%)  >   ???:0x0000000000157320 (1x) [???]
+
+  330,481,867 ( 4.43%)  < ???:SITL::Aircraft::update_dynamics(Vector3<float> const&) (782,780x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   48,355,765 ( 0.65%)  < ???:HALSITL::SITL_State::_fdm_input_local() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      136,006 ( 0.00%)  < ???:AP_Terrain::send_terrain_report(mavlink_channel_t, Location const&, bool) (612x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  378,973,638 ( 5.08%)  *  ???:AP_Terrain::height_amsl(Location const&, float&, bool) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  222,975,060 ( 2.99%)  >   ???:AP_Terrain::calculate_grid_info(Location const&, AP_Terrain::grid_info&) const (624,580x)
+   44,345,640 ( 0.60%)  >   ???:AP_Terrain::find_grid_cache(AP_Terrain::grid_info const&) (624,580x)
+   19,631,600 ( 0.26%)  >   ???:AP_Terrain::check_bitmap(AP_Terrain::grid_block const&, unsigned char, unsigned char) (2,453,950x)
+    2,720,787 ( 0.04%)  >   ???:AP::ahrs() (906,929x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       22,236 ( 0.00%)  >   ???:0x0000000000157190 (1x) [???]
+
+  327,268,505 ( 4.39%)  < ???:SITL::MultiCopter::update(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  327,268,505 ( 4.39%)  *  ???:SITL::Frame::calculate_forces(SITL::Aircraft const&, sitl_input const&, Vector3<float>&, Vector3<float>&, float*, bool)
+
+  252,850,232 ( 3.39%)  *  ???:SITL::Motor::calculate_forces(sitl_input const&, unsigned char, Vector3<float>&, Vector3<float>&, Vector3<float> const&, Vector3<float> const&, float, float, bool) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   29,080,392 ( 0.39%)  >   ???:Vector3<float>::operator*(float) const (2,643,672x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,386,928 ( 0.26%)  >   ???:Vector3<float>::operator%(Vector3<float> const&) const (881,224x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   13,218,360 ( 0.18%)  >   ???:AP_HAL::micros64() (881,224x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    8,812,240 ( 0.12%)  >   ???:Vector3<float>::operator*(Vector3<float> const&) const (881,224x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    8,310,408 ( 0.11%)  >   ???:float constrain_value_line<float>(float, float, float, unsigned int) (881,224x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,287,344 ( 0.07%)  >   ???:Vector3<float>::operator/(float) const (440,612x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,287,344 ( 0.07%)  >   ???:Vector3<float>::operator-=(Vector3<float> const&) (440,612x)
+    5,287,344 ( 0.07%)  >   ???:Vector3<float>::operator-() const (440,612x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,287,344 ( 0.07%)  >   ???:Vector3<float>::operator+=(Vector3<float> const&) (440,612x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,846,732 ( 0.07%)  >   ???:Vector3<float>::operator+(Vector3<float> const&) const (440,612x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  245,872,869 ( 3.30%)  < ???:AP_Scheduler::run(unsigned int) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  245,872,869 ( 3.30%)  *  ???:void Functor<void>::method_wrapper<Copter, &Copter::update_flight_mode>(void*)
+
+  245,801,283 ( 3.30%)  *  ???:Copter::update_flight_mode() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  121,879,789 ( 1.64%)  >   ???:ModeRTL::run() (13,724x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   68,563,589 ( 0.92%)  >   ???:ModeStabilize::run() (15,329x)
+   55,178,940 ( 0.74%)  >   ???:ModeGuided::run() (6,740x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  222,975,060 ( 2.99%)  < ???:AP_Terrain::height_amsl(Location const&, float&, bool) (624,580x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  222,975,060 ( 2.99%)  *  ???:AP_Terrain::calculate_grid_info(Location const&, AP_Terrain::grid_info&) const
+
+  220,526,312 ( 2.96%)  < ???:SITL::Aircraft::fill_fdm(SITL::sitl_fdm&) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  220,526,312 ( 2.96%)  *  ???:SITL::Aircraft::smooth_sensors() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   62,125,127 ( 0.83%)  >   ???:Matrix3<float>::to_euler(float*, float*, float*) const (220,304x)
+   27,538,000 ( 0.37%)  >   ???:Matrix3<float>::normalize() (110,152x)
+   14,540,064 ( 0.20%)  >   ???:QuaternionT<float>::normalize() (330,456x)
+   14,099,456 ( 0.19%)  >   ???:Matrix3<float>::rotate(Vector3<float> const&) (110,152x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   12,887,784 ( 0.17%)  >   ???:Location::offset(double, double) (110,152x)
+   12,227,488 ( 0.16%)  >   ???:QuaternionT<float>::to_axis_angle(Vector3<float>&) const (110,152x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    8,922,312 ( 0.12%)  >   ???:QuaternionT<float>::operator/(QuaternionT<float> const&) const (110,152x)
+    7,710,640 ( 0.10%)  >   ???:QuaternionT<float>::from_rotation_matrix(Matrix3<float> const&) (220,304x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,388,816 ( 0.09%)  >   ???:Matrix3<float>::operator*(Vector3<float> const&) const (220,304x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,058,360 ( 0.08%)  >   ???:Vector3<float>::operator+(Vector3<float> const&) const (550,760x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,635,016 ( 0.05%)  >   ???:Vector3<float>::operator*(float) const (330,456x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,304,560 ( 0.04%)  >   ???:float constrain_value_line<float>(float, float, float, unsigned int) (330,456x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,643,648 ( 0.04%)  >   ???:Vector3<float>::operator/(float) const (220,304x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,313,192 ( 0.03%)  >   ???:Matrix3<float>::transposed() const (110,152x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,762,432 ( 0.02%)  >   ???:Vector3<double>::length() const (110,152x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,321,836 ( 0.02%)  >   ???:Vector3<double>::operator-(Vector3<double> const&) const (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,321,824 ( 0.02%)  >   ???:Vector3<float>::operator+=(Vector3<float> const&) (110,152x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,321,824 ( 0.02%)  >   ???:Vector3<double>::operator/(double) const (110,152x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,321,824 ( 0.02%)  >   ???:Vector3<double>::operator+=(Vector3<double> const&) (110,152x)
+    1,211,672 ( 0.02%)  >   ???:Vector3<float>::operator-(Vector3<float> const&) const (110,152x)
+        1,913 ( 0.00%)  >   ???:0x0000000000156d70 (1x) [???]
+
+  189,041,589 ( 2.54%)  < ???:AP_Scheduler::run(unsigned int) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  189,041,589 ( 2.54%)  *  ???:void Functor<void>::method_wrapper<Copter, &Copter::motors_output>(void*) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  188,970,003 ( 2.54%)  >   ???:Copter::motors_output() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  188,970,003 ( 2.54%)  < ???:void Functor<void>::method_wrapper<Copter, &Copter::motors_output>(void*) (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  188,970,003 ( 2.54%)  *  ???:Copter::motors_output() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  110,653,722 ( 1.48%)  >   ???:Mode::output_to_motors() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   30,334,809 ( 0.41%)  >   ???:SRV_Channels::push() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   27,059,508 ( 0.36%)  >   ???:SRV_Channels::calc_pwm() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,328,220 ( 0.26%)  >   ???:SRV_Channels::output_ch_all() (35,793x)
+      680,067 ( 0.01%)  >   ???:SRV_Channels::cork() (35,793x)
+       16,020 ( 0.00%)  >   ???:AP_HAL::millis() (801x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        2,400 ( 0.00%)  >   ???:ModeGuided::mode_number() const (800x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,961 ( 0.00%)  >   ???:AP_Logger::Write_Event(LogEvent) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            6 ( 0.00%)  >   ???:AP::logger() (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  186,021,608 ( 2.50%)  < ???:SITL::MultiCopter::update(sitl_input const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  186,021,608 ( 2.50%)  *  ???:SITL::Aircraft::update_external_payload(sitl_input const&)
+
+  153,163,692 ( 2.06%)  *  ???:SITL::I2C::update(SITL::Aircraft const&) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   49,853,800 ( 0.67%)  >   ???:SITL::MaxSonarI2CXL::update(SITL::Aircraft const&) (220,308x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   40,080,304 ( 0.54%)  >   ???:SITL::SIM_BattMonitor_SMBus_Generic::update(SITL::Aircraft const&) (220,308x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   15,800,588 ( 0.21%)  >   ???:SITL::Rotoye::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   12,557,656 ( 0.17%)  >   ???:SITL::InvensenseV3::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    8,371,720 ( 0.11%)  >   ???:SITL::MS5XXX::update(SITL::Aircraft const&) (220,308x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,751,294 ( 0.06%)  >   ???:SITL::MCP9600::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,559,976 ( 0.06%)  >   ???:SITL::Airspeed_DLVR::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,983,126 ( 0.03%)  >   ???:SITL::TSYS01::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,656,286 ( 0.02%)  >   ???:SITL::ToshibaLED::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      660,924 ( 0.01%)  >   ???:SITL::I2CDevice::update(SITL::Aircraft const&) (330,462x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  152,613,217 ( 2.05%)  < ???:NavEKF3::UpdateFilter() (34,995x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       35,360 ( 0.00%)  < ???:NavEKF3::Log_Write() (884x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  152,648,577 ( 2.05%)  *  ???:AP_DAL::start_frame(AP_DAL::FrameType) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   59,182,315 ( 0.79%)  >   ???:AP_DAL_Compass::start_frame() (35,397x)
+   34,930,484 ( 0.47%)  >   ???:AP_DAL_GPS::start_frame() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   33,816,888 ( 0.45%)  >   ???:AP_DAL_InertialSensor::start_frame() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    7,555,500 ( 0.10%)  >   ???:AP_DAL_Baro::start_frame() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,070,082 ( 0.08%)  >   ???:AP_AHRS::get_active_airspeed_index() const (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      979,368 ( 0.01%)  >   ???:AP_Logger::WriteReplayBlock(unsigned char, void const*, unsigned short) (37,668x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      880,407 ( 0.01%)  >   ???:AP_Logger::logging_started() (35,397x)
+      743,337 ( 0.01%)  >   ???:AP_Baro::get_EAS2TAS() (35,397x)
+      530,955 ( 0.01%)  >   ???:AP_HAL::micros64() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      358,395 ( 0.00%)  >   ???:AP::ins() (71,679x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      306,140 ( 0.00%)  >   ???:AP_HAL::millis() (15,307x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      275,679 ( 0.00%)  >   ???:AP::logger() (91,893x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      215,037 ( 0.00%)  >   ???:AP::ahrs() (71,679x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      212,382 ( 0.00%)  >   ???:AP::opticalflow() (70,794x)
+      176,985 ( 0.00%)  >   ???:AP_Airspeed::use(unsigned char) const (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      106,191 ( 0.00%)  >   ???:HALSITL::Util::available_memory() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      106,191 ( 0.00%)  >   ???:AP::baro() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      106,191 ( 0.00%)  >   ???:AP::vehicle() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      106,191 ( 0.00%)  >   ???:AP::airspeed() (35,397x)
+      106,191 ( 0.00%)  >   ???:AP::wheelencoder() (35,397x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       94,140 ( 0.00%)  >   ???:AP_Logger::allow_start_ekf() const (18,828x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           57 ( 0.00%)  >   ???:AP_DAL::init_sensors() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+   62,125,127 ( 0.83%)  < ???:SITL::Aircraft::smooth_sensors() (220,304x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   31,096,259 ( 0.42%)  < ???:SITL::Aircraft::fill_fdm(SITL::sitl_fdm&) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   17,850,064 ( 0.24%)  < ???:SITL::Aircraft::update_dynamics(Vector3<float> const&) (66,844x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   11,284,419 ( 0.15%)  < ???:AP_AHRS_DCM::update() (35,797x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   11,283,093 ( 0.15%)  < ???:AP_AHRS_View::update() (35,798x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   10,151,271 ( 0.14%)  < ???:AP_AHRS_SIM::get_results(AP_AHRS_Backend::Estimates&) (35,797x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  143,790,233 ( 1.93%)  *  ???:Matrix3<float>::to_euler(float*, float*, float*) const
+
+  140,590,117 ( 1.89%)  *  ???:HALSITL::UARTDriver::_timer_tick() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   25,993,378 ( 0.35%)  >   ???:SITL::SerialDevice::read_from_device(char*, unsigned long) const (308,838x)
+   19,146,881 ( 0.26%)  >   ???:HALSITL::UARTDriver::_select_check(int) (154,419x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,754,899 ( 0.09%)  >   ???:ByteBuffer::readptr(unsigned int&) (463,257x)
+    6,485,399 ( 0.09%)  >   ???:ByteBuffer::space() const (463,257x)
+    6,439,176 ( 0.09%)  >   ???:SITL::SerialDevice::write_to_device(char const*, unsigned long) const (89,159x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,389,771 ( 0.02%)  >   ???:AP::sitl() (463,257x)
+       90,109 ( 0.00%)  >   ???:ByteBuffer::write(unsigned char const*, unsigned int) (578x)
+       34,484 ( 0.00%)  >   ???:0x0000000000157050 (608x) [???]
+       21,398 ( 0.00%)  >   ???:ByteBuffer::advance(unsigned int) (1,069x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        8,670 ( 0.00%)  >   ???:AP_HAL::micros64() (578x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        6,512 ( 0.00%)  >   ???:0x0000000000156f10 (115x) [???]
+
+  136,458,343 ( 1.83%)  *  ???:NavEKF3_core::CovariancePrediction(Vector3<double>*) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,508,409 ( 0.26%)  >   ???:NavEKF3_core::verifyTiltErrorVariance() (14,120x)
+   12,040,698 ( 0.16%)  >   ???:NavEKF3_core::ConstrainVariances() (14,120x)
+    8,814,560 ( 0.12%)  >   ???:NavEKF3_core::zeroCols(double (&) [24][24], unsigned char, unsigned char) (14,240x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,260,160 ( 0.03%)  >   ???:NavEKF3_core::calcTiltErrorVariance() (14,126x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      819,488 ( 0.01%)  >   ???:double constrain_value_line<double>(double, double, double, unsigned int) (81,952x)
+       30,568 ( 0.00%)  >   ???:NavEKF3_core::FuseDeclination(double) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,152 ( 0.00%)  >   ???:Matrix3<double>::operator*(Matrix3<double> const&) const (12x)
+          354 ( 0.00%)  >   ???:QuaternionT<double>::rotation_matrix(Matrix3<double>&) const (6x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          126 ( 0.00%)  >   ???:Matrix3<double>::transposed() const (6x)
+           90 ( 0.00%)  >   ???:QuaternionT<double>::inverse() const (6x)
+
+  133,599,660 ( 1.79%)  < ???:0x0000000000157680 (1,315,110x) [???]
+  133,599,660 ( 1.79%)  *  /build/glibc-SzIz7B/glibc-2.31/math/w_atan2f_compat.c:atan2f
+
+  129,172,632 ( 1.73%)  < ???:AP_Scheduler::run(unsigned int) (35,792x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  129,172,632 ( 1.73%)  *  ???:void Functor<void>::method_wrapper<GCS, &GCS::update_send>(void*)
+
+  124,082,760 ( 1.66%)  < ???:0x0000000000157a20 (1,825,749x) [???]
+  124,082,760 ( 1.66%)  *  /build/glibc-SzIz7B/glibc-2.31/math/../sysdeps/ieee754/dbl-64/s_sin.c:__cos_fma
+
+  121,879,789 ( 1.64%)  < ???:Copter::update_flight_mode() (13,724x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  121,879,789 ( 1.64%)  *  ???:ModeRTL::run() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   67,813,275 ( 0.91%)  >   ???:Mode::land_run_normal_or_precland(bool) (6,692x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   31,003,563 ( 0.42%)  >   ???:ModeRTL::climb_return_run() (2,803x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   21,152,914 ( 0.28%)  >   ???:ModeRTL::loiterathome_run() (2,001x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,441,756 ( 0.02%)  >   ???:Mode::make_safe_ground_handling(bool) (202x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       75,830 ( 0.00%)  >   ???:Mode::is_disarmed_or_landed() const (6,894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       33,460 ( 0.00%)  >   ???:AP_Motors::set_desired_spool_state(AP_Motors::DesiredSpoolState) (6,692x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        9,196 ( 0.00%)  >   ???:ModeRTL::climb_start() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        5,234 ( 0.00%)  >   ???:AP_Arming_Copter::disarm(AP_Arming::Method, bool) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        4,373 ( 0.00%)  >   ???:AC_WPNav::set_wp_destination_loc(Location const&) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,020 ( 0.00%)  >   ???:ModeRTL::build_path() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          233 ( 0.00%)  >   ???:ModeRTL::land_start() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  >   ???:AP_HAL::millis() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           10 ( 0.00%)  >   ???:Mode::AutoYaw::set_mode_to_default(bool) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            7 ( 0.00%)  >   ???:Mode::AutoYaw::default_mode(bool) const (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            5 ( 0.00%)  >   ???:Mode::AutoYaw::set_mode(Mode::AutoYaw::Mode) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  116,711,530 ( 1.57%)  < ???:GCS::update_send() (107,676x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  116,711,530 ( 1.57%)  *  ???:GCS_MAVLINK::update_send() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   62,317,854 ( 0.84%)  >   ???:GCS_MAVLINK::do_try_send_message(ap_message) (87,513x)
+   22,119,456 ( 0.30%)  >   ???:AP_Logger::handle_log_send() (107,376x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    8,743,604 ( 0.12%)  >   ???:GCS::out_of_time() const (123,374x)
+    5,535,280 ( 0.07%)  >   ???:AP_HAL::millis() (276,764x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,984,558 ( 0.05%)  >   ???:GCS_MAVLINK_InProgress::check_tasks() (107,676x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,013,541 ( 0.01%)  >   ???:0x00000000001575a0 (44,067x) [???]
+      646,056 ( 0.01%)  >   ???:mavlink_get_channel_status (107,676x)
+      322,128 ( 0.00%)  >   ???:AP::logger() (107,376x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      316,210 ( 0.00%)  >   ???:GCS_MAVLINK::find_next_bucket_to_send(unsigned short) (307x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      154,137 ( 0.00%)  >   ???:GCS_MAVLINK::initialise_message_intervals_from_streamrates() (3x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        7,238 ( 0.00%)  >   ???:GCS_MAVLINK::initialise_message_intervals_from_config_files() (3x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  116,417,316 ( 1.56%)  *  ???:AP_InertialSensor_Backend::_notify_new_accel_raw_sample(unsigned char, Vector3<float> const&, unsigned long, bool) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   35,809,108 ( 0.48%)  >   ???:AP_InertialSensor::calc_vibration_and_clipping(unsigned char, Vector3<float> const&, float) (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   17,337,424 ( 0.23%)  >   ???:WithSemaphore::WithSemaphore(AP_HAL::Semaphore&, unsigned int) (162,032x)
+   12,799,954 ( 0.17%)  >   ???:LowPassFilter2p<Vector3<float> >::apply(Vector3<float> const&) (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    8,263,632 ( 0.11%)  >   ???:WithSemaphore::~WithSemaphore() (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,802,227 ( 0.05%)  >   ???:AP_InertialSensor::set_accel_peak_hold(unsigned char, Vector3<float> const&) (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,430,510 ( 0.03%)  >   ???:AP_HAL::micros64() (162,034x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,430,480 ( 0.03%)  >   ???:Vector3<float>::is_inf() const (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,430,480 ( 0.03%)  >   ???:AP_HAL::micros() (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,782,352 ( 0.02%)  >   ???:Vector3<float>::is_nan() const (162,032x)
+    1,620,320 ( 0.02%)  >   ???:AP_InertialSensor::BatchSampler::sample(unsigned char, AP_InertialSensor::IMU_SENSOR_TYPE, unsigned long, Vector3<float> const&) (162,032x)
+      966,510 ( 0.01%)  >   ???:AP_Logger::should_log(unsigned int) const (161,085x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        3,560 ( 0.00%)  >   ???:AP_HAL::millis() (178x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,780 ( 0.00%)  >   ???:float constrain_value_line<float>(float, float, float, unsigned int) (178x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  110,653,722 ( 1.48%)  < ???:Copter::motors_output() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  110,653,722 ( 1.48%)  *  ???:Mode::output_to_motors() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  110,474,757 ( 1.48%)  >   ???:AP_MotorsMulticopter::output() (35,793x)
+
+  110,474,757 ( 1.48%)  < ???:Mode::output_to_motors() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        5,165 ( 0.00%)  < ???:AP_MotorsMulticopter::output_min() (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  110,479,922 ( 1.48%)  *  ???:AP_MotorsMulticopter::output()
+
+   44,267,576 ( 0.59%)  < ???:AP_Baro::calibrate(bool) (25x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,121,433 ( 0.26%)  < ???:AP_InertialSensor::_init_gyro() (105x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   18,738,329 ( 0.25%)  < ???:GCS_MAVLINK::ftp_worker() (30,067x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   18,223,805 ( 0.24%)  < ???:AP_OAPathPlanner::avoidance_thread() (3,553x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    7,637,573 ( 0.10%)  < ???:GCS_MAVLINK::init(unsigned char) [clone .part.0] (12x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      611,188 ( 0.01%)  < ???:Copter::esc_calibration_startup_check() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      233,005 ( 0.00%)  < ???:AP_Logger_File::PrepForArming_start_logging() (4x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  108,832,909 ( 1.46%)  *  ???:HALSITL::Scheduler::delay(unsigned short) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  102,094,477 ( 1.37%)  >   ???:HALSITL::SITL_State::wait_clock(unsigned long) (67,679x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,045,525 ( 0.04%)  >   ???:AP_HAL::micros64() (203,035x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,028,900 ( 0.03%)  >   ???:AP_HAL::millis() (101,445x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      632,305 ( 0.01%)  >   ???:AP_HAL::Scheduler::call_delay_cb() (1,087x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      148,675 ( 0.00%)  >   ???:0x0000000000157310 (29,735x) [???]
+
+  103,313,809 ( 1.39%)  < ???:HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  103,313,809 ( 1.39%)  *  ???:AP_Vehicle::setup() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   97,261,253 ( 1.30%)  >   ???:Copter::init_ardupilot() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,921,704 ( 0.07%)  >   ???:Copter::load_parameters() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      410,524 ( 0.01%)  >   ???:AP_Airspeed::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      274,051 ( 0.00%)  >   ???:AP_Param::check_var_info() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      209,134 ( 0.00%)  >   ???:AP_VideoTX::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      177,937 ( 0.00%)  >   ???:GCS::setup_console() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       36,142 ( 0.00%)  >   ???:AP_SerialManager::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       11,014 ( 0.00%)  >   ???:AP_HAL::BetterStream::printf(char const*, ...) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        2,850 ( 0.00%)  >   ???:AP_Param::setup_sketch_defaults() (1x)
+        2,529 ( 0.00%)  >   ???:check_firmware_print() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,382 ( 0.00%)  >   ???:GCS::send_text(MAV_SEVERITY, char const*, ...) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,196 ( 0.00%)  >   ???:AC_PolyFence_loader::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,020 ( 0.00%)  >   ???:AP_Scheduler::init(AP_Scheduler::Task const*, unsigned char, unsigned int) (1x)
+          914 ( 0.00%)  >   ???:AP_SerialManager::init_console() (1x)
+          610 ( 0.00%)  >   ???:AP_Vehicle::send_watchdog_reset_statustext() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          606 ( 0.00%)  >   ???:AP_MSP::init() (1x)
+           96 ( 0.00%)  >   ???:LowPassFilter<float>::set_cutoff_frequency(float) (32x)
+           74 ( 0.00%)  >   ???:AP_TemperatureSensor::init() (1x)
+           73 ( 0.00%)  >   ???:AP_RunCam::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           68 ( 0.00%)  >   ???:AP_NMEA_Output::init() (1x)
+           65 ( 0.00%)  >   ???:AP_Hott_Telem::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           24 ( 0.00%)  >   ???:AP_GyroFFT::init(unsigned short) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           22 ( 0.00%)  >   ???:SRV_Channels::init(unsigned int, AP_HAL::RCOutput::output_mode) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           18 ( 0.00%)  >   ???:AP_EFI::init() (1x)
+           18 ( 0.00%)  >   ???:AP_CustomRotations::init() (1x)
+           18 ( 0.00%)  >   ???:AP_ExternalAHRS::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           16 ( 0.00%)  >   ???:AP_SmartAudio::init() (1x)
+           16 ( 0.00%)  >   ???:AP_Tramp::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           15 ( 0.00%)  >   ???:AP_Generator::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           15 ( 0.00%)  >   ???:AP_VisualOdom::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           10 ( 0.00%)  >   ???:GCS::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            9 ( 0.00%)  >   ???:gcs() (3x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            8 ( 0.00%)  >   ???:AP_Airspeed::enabled(unsigned char) const (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            6 ( 0.00%)  >   ???:Copter::get_scheduler_tasks(AP_Scheduler::Task const*&, unsigned char&, unsigned int&) (1x)
+            6 ( 0.00%)  >   ???:AP::scheduler() (2x)
+            4 ( 0.00%)  >   ???:AP_HAL::Scheduler::register_delay_callback(void (*)(), unsigned short) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            4 ( 0.00%)  >   ???:AP_OpenDroneID::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            3 ( 0.00%)  >   ???:AP_Param::invalidate_count() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            3 ( 0.00%)  >   ???:AP::fwversion() (1x)
+            3 ( 0.00%)  >   ???:HALSITL::Util::available_memory() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            2 ( 0.00%)  >   ???:AP_AIS::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+   17,752,832 ( 0.24%)  < ???:AP_Logger::handle_log_send() (143,168x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   17,337,424 ( 0.23%)  < ???:AP_InertialSensor_Backend::_notify_new_accel_raw_sample(unsigned char, Vector3<float> const&, unsigned long, bool) (162,032x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   16,681,032 ( 0.22%)  < ???:AP_Param::save_io_handler() (154,454x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   16,366,196 ( 0.22%)  < ???:AP_Param::count_parameters() (151,538x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    7,578,362 ( 0.10%)  < ???:AP_Logger_File::_WritePrioritisedBlock(void const*, unsigned short, bool) (61,128x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,496,736 ( 0.06%)  < ???:AP_Logger::msg_fmt_for_name(char const*, char const*, char const*, char const*, char const*, bool, bool) (36,264x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,451,694 ( 0.06%)  < ???:GCS::service_statustext() (35,901x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,450,732 ( 0.06%)  < ???:GCS::update_passthru() (35,893x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,438,828 ( 0.06%)  < ???:AP_AHRS::update(bool) (35,797x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,438,332 ( 0.06%)  < ???:SRV_Channels::calc_pwm() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,944,212 ( 0.04%)  < ???:AP_Compass_Backend::accumulate_sample(Vector3<float>&, unsigned char, unsigned int) (27,516x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      554,776 ( 0.01%)  < ???:AP_GPS::update() (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      332,940 ( 0.00%)  < ???:AP_Compass_Backend::drain_accumulated_samples(unsigned char, Vector3<float> const*) (2,685x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      225,432 ( 0.00%)  < ???:AP_Baro_SITL::update() (1,818x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      112,716 ( 0.00%)  < ???:AP_Baro::update() (909x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       14,875 ( 0.00%)  < ???:AP_OAPathPlanner::avoidance_thread() (125x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        7,256 ( 0.00%)  < ???:GCS_MAVLINK::service_statustext() (59x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,785 ( 0.00%)  < ???:AP_OADijkstra::update(Location const&, Location const&, Location&, Location&) (15x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,240 ( 0.00%)  < ???:RangeFinder::init(Rotation) (10x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          952 ( 0.00%)  < ???:AP_Logger::file_content_update(AP_Logger::FileContent&) (8x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          952 ( 0.00%)  < ???:AP_Logger::log_file_content(AP_Logger::FileContent&, char const*) (8x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          248 ( 0.00%)  < ???:AP_AHRS::set_home(Location const&) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          124 ( 0.00%)  < ???:AP_Stats::set_flying(bool) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          124 ( 0.00%)  < ???:AP_AHRS::resetHeightDatum() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          124 ( 0.00%)  < ???:RC_Channels::set_aux_cached(RC_Channel::AUX_FUNC, RC_Channel::AuxSwitchPos) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          124 ( 0.00%)  < ???:AP_Logger::Init(LogStructure const*, unsigned char) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          124 ( 0.00%)  < ???:AP_AHRS::reset() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  102,190,172 ( 1.37%)  *  ???:WithSemaphore::WithSemaphore(AP_HAL::Semaphore&, unsigned int)
+
+  102,094,477 ( 1.37%)  < ???:HALSITL::Scheduler::delay(unsigned short) (67,679x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  102,094,477 ( 1.37%)  *  ???:HALSITL::SITL_State::wait_clock(unsigned long) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+3,528,446,672 (47.34%)  >   ???:HALSITL::SITL_State::_fdm_input_step() (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   24,972,960 ( 0.34%)  >   ???:0x0000000000157710 (221,001x) [???]
+    7,546,545 ( 0.10%)  >   ???:AP_HAL::micros64() (503,103x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,960,656 ( 0.08%)  >   ???:HALSITL::Scheduler::in_main_thread() const (331,155x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,536,016 ( 0.05%)  >   ???:HALSITL::Scheduler::semaphore_wait_hack_required() const (221,001x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+  101,742,706 ( 1.37%)  < ???:AP_InertialSensor_SITL::generate_gyro() (158,473x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+  101,742,706 ( 1.37%)  *  ???:AP_InertialSensor_Backend::_notify_new_gyro_raw_sample(unsigned char, Vector3<float> const&, unsigned long)
+
+   99,852,648 ( 1.34%)  < ???:HALSITL::SITL_State::_fdm_input_local() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   99,852,648 ( 1.34%)  *  ???:HALSITL::SITL_State::_output_to_flightgear()
+
+   97,261,253 ( 1.30%)  < ???:AP_Vehicle::setup() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   97,261,253 ( 1.30%)  *  ???:Copter::init_ardupilot() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   44,308,366 ( 0.59%)  >   ???:AP_Baro::calibrate(bool) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,425,503 ( 0.26%)  >   ???:AP_InertialSensor::init(unsigned short) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   12,235,364 ( 0.16%)  >   ???:Copter::allocate_motors() (1x)
+    9,664,016 ( 0.13%)  >   ???:Compass::init() (1x)
+    7,471,776 ( 0.10%)  >   ???:GCS::setup_uarts() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      909,131 ( 0.01%)  >   ???:Copter::init_rc_in() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      746,393 ( 0.01%)  >   ???:Copter::init_rangefinder() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      727,695 ( 0.01%)  >   ???:Copter::log_init() (1x)
+      615,016 ( 0.01%)  >   ???:Copter::esc_calibration_startup_check() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      371,965 ( 0.00%)  >   ???:AP_BattMonitor::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      360,905 ( 0.00%)  >   ???:AP_OAPathPlanner::init() (1x)
+      199,151 ( 0.00%)  >   ???:Copter::init_rc_out() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       92,742 ( 0.00%)  >   ???:AP_RPM::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       38,411 ( 0.00%)  >   ???:AP_BoardConfig::init() (1x)
+       27,133 ( 0.00%)  >   ???:AP_Mount::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       21,465 ( 0.00%)  >   ???:AP_Notify::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       12,414 ( 0.00%)  >   ???:AP_LandingGear::init() (1x)
+       10,453 ( 0.00%)  >   ???:AP_Camera::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        5,540 ( 0.00%)  >   ???:AP_CANManager::init() (1x)
+        4,643 ( 0.00%)  >   ???:AP_SmartRTL::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        2,529 ( 0.00%)  >   ???:AP_MotorsMulticopter::output_min() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,527 ( 0.00%)  >   ???:RC_Channels::init() (1x)
+        1,400 ( 0.00%)  >   ???:AP_AHRS::reset() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,263 ( 0.00%)  >   ???:AP_Baro::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,060 ( 0.00%)  >   ???:Copter::set_land_complete(bool) (1x)
+        1,010 ( 0.00%)  >   ???:Copter::set_land_complete_maybe(bool) (1x)
+          874 ( 0.00%)  >   ???:AP_Mission::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          805 ( 0.00%)  >   ???:Copter::init_precland() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          604 ( 0.00%)  >   ???:AP_Stats::init() (1x)
+          351 ( 0.00%)  >   ???:Copter::update_using_interlock() (1x)
+          346 ( 0.00%)  >   ???:RC_Channels::convert_options(RC_Channel::AUX_FUNC, RC_Channel::AUX_FUNC) (1x)
+          300 ( 0.00%)  >   ???:AP_SerialManager::set_blocking_writes_all(bool) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          257 ( 0.00%)  >   ???:AP_RSSI::init() (1x)
+          161 ( 0.00%)  >   ???:AP_GPS::init(AP_SerialManager const&) (1x)
+          156 ( 0.00%)  >   ???:AP_Relay::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           77 ( 0.00%)  >   ???:Copter::notify_flight_mode() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           74 ( 0.00%)  >   ???:AP_Proximity::init() (1x)
+           46 ( 0.00%)  >   ???:Copter::set_mode(Mode::Number, ModeReason) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           36 ( 0.00%)  >   ???:AC_AttitudeControl_Multi::parameter_sanity_check() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           27 ( 0.00%)  >   ???:AP_AHRS::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           22 ( 0.00%)  >   ???:Copter::failsafe_enable() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  >   ???:AP_Beacon::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           18 ( 0.00%)  >   ???:AC_CustomControl::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           13 ( 0.00%)  >   ???:AP_Winch::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           13 ( 0.00%)  >   ???:AP_OSD::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            6 ( 0.00%)  >   ???:AP_OpticalFlow::init(unsigned int) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            6 ( 0.00%)  >   ???:rc() (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            6 ( 0.00%)  >   ???:AP::compass() (2x)
+            4 ( 0.00%)  >   ???:AP_Gripper::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            4 ( 0.00%)  >   ???:AP_Scripting::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            4 ( 0.00%)  >   ???:AP_Logger::setVehicle_Startup_Writer(Functor<void>) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+            3 ( 0.00%)  >   ???:HALSITL::Scheduler::register_timer_failsafe(void (*)(), unsigned int) (1x)
+
+   48,091,336 ( 0.65%)  < ???:SITL::MaxSonarI2CXL::update(SITL::Aircraft const&) (220,308x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   24,045,492 ( 0.32%)  < ???:SITL::Aircraft::fill_fdm(SITL::sitl_fdm&) (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   24,045,452 ( 0.32%)  < ???:HALSITL::SITL_State::_update_rangefinder() (110,153x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   96,182,280 ( 1.29%)  *  ???:SITL::Aircraft::rangefinder_range() const [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   42,888,292 ( 0.58%)  >   ???:rand_float() (550,768x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   19,380,976 ( 0.26%)  >   ???:0x00000000001571e0 (1,101,536x) [???]
+
+   92,716,715 ( 1.24%)  *  ???:NavEKF3_core::readIMUData() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   35,114,816 ( 0.47%)  >   ???:NavEKF3_core::learnInactiveBiases() (70,796x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   20,097,914 ( 0.27%)  >   ???:QuaternionT<double>::rotate(Vector3<double> const&) (70,796x)
+    5,826,304 ( 0.08%)  >   ???:NavEKF3_core::updateMovementCheck() (70,796x)
+    4,176,964 ( 0.06%)  >   ???:QuaternionT<double>::rotation_matrix(Matrix3<double>&) const (70,796x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,703,786 ( 0.05%)  >   ???:QuaternionT<double>::to_axis_angle(Vector3<double>&) const (14,200x)
+    3,115,024 ( 0.04%)  >   ???:QuaternionT<double>::normalize() (70,796x)
+    2,123,880 ( 0.03%)  >   ???:Matrix3<double>::operator*(Vector3<double> const&) const (70,796x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      900,674 ( 0.01%)  >   ???:NavEKF3_core::updateTimingStatistics() (14,200x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      849,960 ( 0.01%)  >   ???:double constrain_value_line<double>(double, double, double, unsigned int) (84,996x)
+      849,552 ( 0.01%)  >   ???:Vector3<double>::operator+=(Vector3<double> const&) (70,796x)
+      695,800 ( 0.01%)  >   ???:NavEKF3_core::correctDeltaAngle(Vector3<double>&, double, unsigned char) (14,200x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      695,800 ( 0.01%)  >   ???:NavEKF3_core::correctDeltaVelocity(Vector3<double>&, double, unsigned char) (14,200x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      640,577 ( 0.01%)  >   ???:ekf_imu_buffer::push_youngest_element(void const*) (14,200x)
+      539,600 ( 0.01%)  >   ???:ekf_imu_buffer::get_oldest_element(void*) (14,200x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      241,400 ( 0.00%)  >   ???:NavEKF3_core::SampleDragData(NavEKF3_core::imu_elements const&) (14,200x)
+
+   31,543,960 ( 0.42%)  < ???:AP_InertialSensor_SITL::generate_gyro() (1,577,198x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    6,609,240 ( 0.09%)  < ???:SITL::SIM_BattMonitor_SMBus::update(SITL::Aircraft const&) (330,462x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,535,280 ( 0.07%)  < ???:GCS_MAVLINK::update_send() (276,764x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    4,405,800 ( 0.06%)  < ???:AP_Baro_SITL::_timer() (220,290x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    3,088,180 ( 0.04%)  < ???:HALSITL::Storage::_timer_tick() (154,409x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,743,920 ( 0.04%)  < ???:AP_ESC_Telem::update_telem_data(unsigned char, AP_ESC_Telem_Backend::TelemetryData const&, unsigned short) (137,196x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,294,800 ( 0.03%)  < ???:HALSITL::SITL_State::_fdm_input_step() (114,740x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  < ???:SITL::MCP9600::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  < ???:SITL::Airspeed_DLVR::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  < ???:SITL::Aircraft::add_shove_forces(Vector3<float>&, Vector3<float>&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  < ???:SITL::Aircraft::update_position() (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  < ???:SITL::Aircraft::add_twist_forces(Vector3<float>&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,203,080 ( 0.03%)  < ???:SITL::Rotoye::update(SITL::Aircraft const&) (110,154x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,202,100 ( 0.03%)  < ???:AP_Compass_SITL::_timer() (110,105x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,153,520 ( 0.03%)  < ???:GCS_MAVLINK_InProgress::check_tasks() (107,676x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    2,028,900 ( 0.03%)  < ???:HALSITL::Scheduler::delay(unsigned short) (101,445x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,800,360 ( 0.02%)  < ???:AP_InertialSensor::set_accel_peak_hold(unsigned char, Vector3<float> const&) (90,018x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,701,520 ( 0.02%)  < ???:void Functor<void>::method_wrapper<AP_SmartRTL, &AP_SmartRTL::run_background_cleanup>(void*) (85,076x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,431,880 ( 0.02%)  < ???:AP_AHRS::update_EKF2() (71,594x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,431,680 ( 0.02%)  < ???:void Functor<void>::method_wrapper<AP_Vehicle, &AP_Vehicle::update_dynamic_notch_at_specified_rate>(void*) (71,584x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      805,400 ( 0.01%)  < ???:Copter::read_radio() (40,270x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      717,860 ( 0.01%)  < ???:GCS::update_passthru() (35,893x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      715,960 ( 0.01%)  < ???:AP_AHRS::update_orientation() (35,798x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      715,880 ( 0.01%)  < ???:HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const (35,794x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      715,860 ( 0.01%)  < ???:Copter::update_rangefinder_terrain_offset() (35,793x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      653,620 ( 0.01%)  < ???:AP_Logger_File::io_timer() (32,681x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      357,920 ( 0.00%)  < ???:AP_Proximity_Boundary_3D::check_face_timeout() (17,896x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      306,140 ( 0.00%)  < ???:AP_DAL::start_frame(AP_DAL::FrameType) (15,307x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      267,680 ( 0.00%)  < ???:AC_PrecLand::target_acquired() (13,384x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      199,360 ( 0.00%)  < ???:AP_AHRS::update_flags() (9,968x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       96,080 ( 0.00%)  < ???:AC_WPNav::update_wpnav() (4,804x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       91,700 ( 0.00%)  < ???:RGBLed::update() (4,585x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       89,520 ( 0.00%)  < ???:RC_Channels::read_input() (4,476x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       89,480 ( 0.00%)  < ???:AP_GPS::update_primary() (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       89,480 ( 0.00%)  < ???:AP_GPS::update_instance(unsigned char) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       89,480 ( 0.00%)  < ???:AP_AHRS::set_takeoff_expected(bool) (4,474x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       70,600 ( 0.00%)  < ???:AP_OAPathPlanner::avoidance_thread() (3,530x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       53,640 ( 0.00%)  < ???:AP_Compass_Backend::drain_accumulated_samples(unsigned char, Vector3<float> const*) (2,682x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       40,020 ( 0.00%)  < ???:ModeRTL::loiterathome_run() (2,001x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       38,620 ( 0.00%)  < ???:GCS_MAVLINK::try_send_message(ap_message) (1,931x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       36,360 ( 0.00%)  < ???:AP_Baro_Backend::_copy_to_frontend(unsigned char, float, float) (1,818x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       35,780 ( 0.00%)  < ???:AP_Proximity::set_rangefinder_alt(bool, bool, float) (1,789x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       31,780 ( 0.00%)  < ???:AP_Logger_File::_WritePrioritisedBlock(void const*, unsigned short, bool) (1,589x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       22,740 ( 0.00%)  < ???:AP_AHRS_DCM::get_location(Location&) const (1,137x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       21,660 ( 0.00%)  < ???:AP_Vehicle::scheduler_delay_callback() (1,083x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       18,420 ( 0.00%)  < ???:SITL::GPS::update_ubx(SITL::GPS::gps_data const*) (921x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       18,180 ( 0.00%)  < ???:AP_Baro::update_field_elevation() (909x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       17,900 ( 0.00%)  < ???:Compass::read() [clone .part.0] (895x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       17,880 ( 0.00%)  < ???:Copter::check_vibration() (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       17,880 ( 0.00%)  < ???:Copter::auto_disarm_check() (894x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       16,020 ( 0.00%)  < ???:Copter::motors_output() (801x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       13,960 ( 0.00%)  < ???:AP_InertialSensor::update() (698x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+       13,700 ( 0.00%)  < ???:AP_AHRS_DCM::drift_correction(float) (685x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        8,400 ( 0.00%)  < ???:AP_BattMonitor_Backend::update_failsafes() (420x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        8,340 ( 0.00%)  < ???:AP_GPS_UBLOX::_parse_gps() (417x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        7,320 ( 0.00%)  < ???:AP_BattMonitor_Backend::update_resistance_estimate() (366x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        7,080 ( 0.00%)  < ???:AP_Logger_File::logging_failed() const (354x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        6,140 ( 0.00%)  < ???:GCS_MAVLINK::find_next_bucket_to_send(unsigned short) (307x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        6,120 ( 0.00%)  < ???:GCS_MAVLINK::send_rc_channels() const (306x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        6,120 ( 0.00%)  < ???:AP_OADatabase::send_adsb_vehicle(mavlink_channel_t, unsigned short) (306x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        4,040 ( 0.00%)  < ???:GCS_MAVLINK::send_local_position() const (202x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        3,560 ( 0.00%)  < ???:AP_InertialSensor_Backend::_notify_new_accel_raw_sample(unsigned char, Vector3<float> const&, unsigned long, bool) (178x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        1,800 ( 0.00%)  < ???:AP_Logger_File::periodic_1Hz() (90x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          980 ( 0.00%)  < ???:GCS_MAVLINK_Copter::send_position_target_global_int() (49x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          960 ( 0.00%)  < ???:AP_Arming::ins_accels_consistent(AP_InertialSensor const&) (48x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          960 ( 0.00%)  < ???:HALSITL::Storage::healthy() (48x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          760 ( 0.00%)  < ???:AP_Arming::ins_checks(bool) (38x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          600 ( 0.00%)  < ???:AP_Baro::calibrate(bool) (30x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          500 ( 0.00%)  < ???:GCS::StatusTextQueue::prune() (25x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          320 ( 0.00%)  < ???:SITL::TSYS01::update(SITL::Aircraft const&) (16x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          260 ( 0.00%)  < ???:GCS_MAVLINK::save_signing_timestamp(bool) (13x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          120 ( 0.00%)  < ???:GCS_MAVLINK::ftp_worker() (6x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          120 ( 0.00%)  < ???:AP_Logger_File::PrepForArming_start_logging() (6x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           80 ( 0.00%)  < ???:RC_Channel::read_aux() (4x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           60 ( 0.00%)  < ???:AP_SmartRTL::set_home(bool) (3x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           60 ( 0.00%)  < ???:AP_Baro::update_calibration() (3x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           40 ( 0.00%)  < ???:AP_Logger_File::start_new_log() [clone .part.0] (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           40 ( 0.00%)  < ???:SITL::Aircraft::update_dynamics(Vector3<float> const&) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           40 ( 0.00%)  < ???:AP_Stats::set_flying(bool) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           40 ( 0.00%)  < ???:AC_WPNav::wp_and_spline_init(float, Vector3<float>) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           40 ( 0.00%)  < ???:AP_HAL::Util::set_soft_armed(bool) (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  < ???:AP_Arming::arm_checks(AP_Arming::Method) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  < ???:AC_PolyFence_loader::load_from_eeprom() [clone .part.0] (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  < ???:ModeRTL::run() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  < ???:AP_Mission::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+           20 ( 0.00%)  < ???:AP_Relay::init() (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   88,741,180 ( 1.19%)  *  ???:AP_HAL::millis() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+   84,885,759 ( 1.14%)  *  ???:void Functor<void>::method_wrapper<AP_Param, &AP_Param::save_io_handler>(void*) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   84,576,921 ( 1.13%)  >   ???:AP_Param::save_io_handler() (154,419x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+   84,576,921 ( 1.13%)  < ???:void Functor<void>::method_wrapper<AP_Param, &AP_Param::save_io_handler>(void*) (154,419x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   84,576,921 ( 1.13%)  *  ???:AP_Param::save_io_handler() [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   29,540,550 ( 0.40%)  >   ???:AP_Param::count_parameters() (151,490x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   22,604,176 ( 0.30%)  >   ???:AP_Param::save_sync(bool, bool) (35x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   16,681,032 ( 0.22%)  >   ???:WithSemaphore::WithSemaphore(AP_HAL::Semaphore&, unsigned int) (154,454x)
+    7,877,154 ( 0.11%)  >   ???:WithSemaphore::~WithSemaphore() (154,454x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,235,634 ( 0.02%)  >   ???:ByteBuffer::available() const (154,454x)
+      463,257 ( 0.01%)  >   ???:HALSITL::Scheduler::is_system_initialized() (154,419x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+        3,446 ( 0.00%)  >   ???:ByteBuffer::read(unsigned char*, unsigned int) (35x)
+
+   81,103,550 ( 1.09%)  *  ???:EKFGSF_yaw::update(Vector3<double> const&, Vector3<double> const&, double, double, bool, double) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   62,709,053 ( 0.84%)  >   ???:EKFGSF_yaw::predict(unsigned char) (70,510x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    7,655,080 ( 0.10%)  >   ???:0x0000000000157150 (70,510x) [???]
+    3,417,712 ( 0.05%)  >   ???:wrap_PI(double) (70,510x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,900,391 ( 0.03%)  >   ???:0x0000000000156dd0 (14,102x) [???]
+      310,640 ( 0.00%)  >   ???:Vector3<double>::operator*(double) const (28,240x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      225,632 ( 0.00%)  >   ???:Vector3<double>::length() const (14,102x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      169,440 ( 0.00%)  >   ???:Vector3<double>::operator/(double) const (14,120x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      169,440 ( 0.00%)  >   ???:Vector3<double>::operator+(Vector3<double> const&) const (14,120x)
+      112,960 ( 0.00%)  >   ???:0x0000000000157570 (14,120x) [???]
+      112,960 ( 0.00%)  >   ???:0x00000000001570b0 (14,120x) [???]
+          510 ( 0.00%)  >   ???:EKFGSF_yaw::alignTilt() (2x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          180 ( 0.00%)  >   ???:Vector3<double>::operator*(Vector3<double> const&) const (18x)
+
+   75,405,552 ( 1.01%)  *  /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:start_thread [/usr/lib/x86_64-linux-gnu/libpthread-2.31.so]
+   75,403,550 ( 1.01%)  >   ???:HALSITL::Scheduler::thread_create_trampoline(void*) (3x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+          951 ( 0.00%)  >   ???:0x0000000004bcb950 (3x) [???]
+          916 ( 0.00%)  >   ???:0x0000000004bcb7d0 (3x) [???]
+
+   75,403,550 ( 1.01%)  < /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c:start_thread (3x) [/usr/lib/x86_64-linux-gnu/libpthread-2.31.so]
+   75,403,550 ( 1.01%)  *  ???:HALSITL::Scheduler::thread_create_trampoline(void*) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   33,267,975 ( 0.45%)  >   ???:void Functor<void>::method_wrapper<GCS_MAVLINK, &GCS_MAVLINK::ftp_worker>(void*) (1x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   23,505,444 ( 0.32%)  >   ???:void Functor<void>::method_wrapper<AP_Logger, &AP_Logger::io_thread>(void*) (1x)
+   18,630,074 ( 0.25%)  >   ???:void Functor<void>::method_wrapper<AP_OAPathPlanner, &AP_OAPathPlanner::avoidance_thread>(void*) (1x)
+           15 ( 0.00%)  >   ???:0x0000000000157310 (3x) [???]
+
+   70,475,493 ( 0.95%)  *  ???:AC_AttitudeControl::input_thrust_vector_rate_heading(Vector3<float> const&, float, bool) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+   32,813,970 ( 0.44%)  >   ???:AC_AttitudeControl::attitude_controller_run_quat() (15,968x)
+   16,619,147 ( 0.22%)  >   ???:AC_AttitudeControl::thrust_vector_rotation_angles(QuaternionT<float> const&, QuaternionT<float> const&, QuaternionT<float>&, Vector3<float>&, float&, float&) const (15,968x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    7,661,870 ( 0.10%)  >   ???:AC_AttitudeControl::attitude_from_thrust_vector(Vector3<float>, float) const (15,968x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    5,588,840 ( 0.07%)  >   ???:QuaternionT<float>::to_euler(float&, float&, float&) const (15,968x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,963,346 ( 0.03%)  >   ???:AC_AttitudeControl::ang_vel_to_euler_rate(Vector3<float> const&, Vector3<float> const&, Vector3<float>&) (15,968x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+    1,564,864 ( 0.02%)  >   ???:sqrt_controller(float, float, float, float) (31,936x)
+      638,720 ( 0.01%)  >   ???:float constrain_value_line<float>(float, float, float, unsigned int) (63,872x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+      463,072 ( 0.01%)  >   ???:AC_AttitudeControl::ang_vel_limit(Vector3<float>&, float, float, float) const (15,968x) [/home/hwcpsec/ardupilot/build/sitl/bin/arducopter]
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  /build/glibc-SzIz7B/glibc-2.31/csu/../csu/libc-start.c
+  /build/glibc-SzIz7B/glibc-2.31/math/../sysdeps/ieee754/dbl-64/s_sin.c
+  /build/glibc-SzIz7B/glibc-2.31/math/w_atan2f_compat.c
+  /build/glibc-SzIz7B/glibc-2.31/nptl/pthread_create.c
+  /build/glibc-SzIz7B/glibc-2.31/stdlib/random.c
+  /build/glibc-SzIz7B/glibc-2.31/string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+

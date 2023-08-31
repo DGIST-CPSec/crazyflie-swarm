@@ -10,6 +10,7 @@ from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.crtp import pcap as crtp_pcap
 
 URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E70A')
+# URI = uri_helper.uri_from_env(default='usb://0')
 execdate = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
 logat = os.path.join('./collected', execdate+'.txt')
 
@@ -30,10 +31,12 @@ class ConsoleCollector:
 
     def initialize(self, scf):
         print('initializing...')
-        scf.param.request_update_of_all_params()
+        scf.cf.param.request_update_of_all_params()
         scf.cf.param.set_value('kalman.resetEstimation', '1')
+        scf.cf.param.set_value('system.taskDump', '1')
         time.sleep(0.1)
         scf.cf.param.set_value('kalman.resetEstimation', '0')
+        scf.cf.param.set_value('system.taskDump', '0')
         print('[INIT]: kalman prediction reset')
         scf.cf.param.set_value('health.startPropTest', '1') # propeller test before flight
         time.sleep(5)
@@ -48,10 +51,15 @@ class ConsoleCollector:
 
 if __name__ == '__main__':
     # print('whatever just started')
+    print('[Experiment]', execdate)
     cflib.crtp.init_drivers() 
     cc = ConsoleCollector(URI)
     print('[INFO]: Starting console log')
-    time.sleep(10)
+    # cc.initialize(cc.scf)
+    cc._cf.param.set_value('system.taskDump', '1')
+    time.sleep(2)
+    cc._cf.param.set_value('system.taskDump', '0')
+    time.sleep(2)
     print('[INFO]: Stopping console log')
     cc.terminate()
     # pswtch.platform_power_down()
